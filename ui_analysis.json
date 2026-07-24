@@ -1,0 +1,849 @@
+[
+    {
+        "page": "about.blade.php",
+        "line": 40,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "admin\\contacts.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\create-product.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\create-product.blade.php",
+        "line": 11,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\create-product.blade.php",
+        "line": 16,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\create-product.blade.php",
+        "line": 99,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\create-product.blade.php",
+        "line": 103,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\dashboard.blade.php",
+        "line": 203,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 11,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 16,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 95,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 96,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 96,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 107,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\edit-product.blade.php",
+        "line": 111,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\products.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\products.blade.php",
+        "line": 8,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\products.blade.php",
+        "line": 10,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\products.blade.php",
+        "line": 51,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "admin\\reviews.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\user-profile.blade.php",
+        "line": 21,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "admin\\users.blade.php",
+        "line": 9,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\login.blade.php",
+        "line": 24,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\login.blade.php",
+        "line": 33,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\login.blade.php",
+        "line": 50,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\login.blade.php",
+        "line": 55,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\login.blade.php",
+        "line": 64,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 8,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 17,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 26,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 35,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 43,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "auth\\register.blade.php",
+        "line": 47,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "cart.blade.php",
+        "line": 86,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "category.blade.php",
+        "line": 18,
+        "issue": "Redundant button classes",
+        "impact": "CSS bloat and hover state conflicts.",
+        "priority": "Medium"
+    },
+    {
+        "page": "category.blade.php",
+        "line": 75,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "category.blade.php",
+        "line": 85,
+        "issue": "Redundant button classes",
+        "impact": "CSS bloat and hover state conflicts.",
+        "priority": "Medium"
+    },
+    {
+        "page": "checkout.blade.php",
+        "line": 183,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 21,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 23,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 24,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 29,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 31,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 32,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 37,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 39,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 40,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 45,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 47,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "contact.blade.php",
+        "line": 48,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "emails\\order-confirmation.blade.php",
+        "line": 103,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "emails\\order-confirmation.blade.php",
+        "line": 107,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "emails\\order-confirmation.blade.php",
+        "line": 113,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 41,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 46,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 148,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 156,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 164,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 181,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 186,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 191,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 216,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 221,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 225,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 230,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "image-detail.blade.php",
+        "line": 236,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "invoice.blade.php",
+        "line": 77,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "invoice.blade.php",
+        "line": 92,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "layouts\\guest.blade.php",
+        "line": 21,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "layouts\\guest.blade.php",
+        "line": 23,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "layouts\\guest.blade.php",
+        "line": 27,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 85,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 86,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 90,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 91,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 92,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 92,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 95,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 98,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 104,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 105,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 106,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 106,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 109,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 112,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "orders.blade.php",
+        "line": 117,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\categories.blade.php",
+        "line": 4,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\featured.blade.php",
+        "line": 22,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "partials\\footer.blade.php",
+        "line": 7,
+        "issue": "Logo inside heading tag",
+        "impact": "SEO and Screen Reader hierarchy violation.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\header.blade.php",
+        "line": 97,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\header.blade.php",
+        "line": 98,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\header.blade.php",
+        "line": 106,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "partials\\header.blade.php",
+        "line": 107,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 4,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 6,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 10,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 14,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 34,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 40,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 44,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 49,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 55,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 58,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 62,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "payment.blade.php",
+        "line": 74,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "profile\\edit.blade.php",
+        "line": 21,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "search.blade.php",
+        "line": 132,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "shop\\index.blade.php",
+        "line": 22,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "store.blade.php",
+        "line": 27,
+        "issue": "Redundant button classes",
+        "impact": "CSS bloat and hover state conflicts.",
+        "priority": "Medium"
+    },
+    {
+        "page": "store.blade.php",
+        "line": 85,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "store.blade.php",
+        "line": 97,
+        "issue": "Redundant button classes",
+        "impact": "CSS bloat and hover state conflicts.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 145,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 151,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 192,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 196,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 214,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 259,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "welcome.blade.php",
+        "line": 263,
+        "issue": "Inline CSS found",
+        "impact": "Prevents CSS modularity & caching.",
+        "priority": "Medium"
+    },
+    {
+        "page": "wishlist.blade.php",
+        "line": 86,
+        "issue": "Missing alt attribute on <img>",
+        "impact": "WCAG Accessibility Violation.",
+        "priority": "High"
+    },
+    {
+        "page": "wishlist.blade.php",
+        "line": 99,
+        "issue": "Redundant button classes",
+        "impact": "CSS bloat and hover state conflicts.",
+        "priority": "Medium"
+    }
+]

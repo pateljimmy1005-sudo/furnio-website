@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Custom Furniture Theme */
+    --theme-primary: #C06B1F;
+    --theme-primary-hover: #A35817;
+    --theme-primary-rgb: 192, 107, 31;
+    --theme-dark: #1A1A1A;
+    --theme-gray: #757575;
+    --theme-light: #F8F9FA;
+    --theme-white: #FFFFFF;
+
+    /* Override Bootstrap Variables */
+    --bs-primary: var(--theme-primary);
+    --bs-primary-rgb: var(--theme-primary-rgb);
+    --bs-link-color: var(--theme-primary);
+    --bs-link-hover-color: var(--theme-primary-hover);
+    --bs-font-sans-serif: 'Inter', sans-serif;
+    --bs-body-font-family: 'Inter', sans-serif;
+    --bs-body-color: var(--theme-dark);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--bs-font-sans-serif);
+    background-color: var(--theme-light);
+    color: var(--theme-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Global Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: var(--theme-dark);
+    color: var(--theme-light);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.top-bar .social-icon a {
+    color: var(--theme-light);
+    margin-left: 15px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.top-bar .social-icon a:hover {
+    color: var(--theme-primary);
+    transform: translateY(-2px);
+}
+
+/* Custom Standard Buttons */
+.btn-main, .btn-primary, .btn-orange {
+    background-color: var(--theme-primary) !important;
+    color: var(--theme-white) !important;
+    border: none !important;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease !important;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-main:hover, .btn-primary:hover, .btn-orange:hover {
+    background-color: var(--theme-primary-hover) !important;
+    box-shadow: 0 4px 12px rgba(192, 107, 31, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+.text-primary {
+    color: var(--theme-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--theme-primary) !important;
+}
+
+/* Focus outlines */
+:focus-visible {
+    outline: 2px solid var(--theme-primary);
+    outline-offset: 2px;
+}
+
+/* Typography Update */
+.btn-main, .btn-outline, .btn-secondary, .form-control, .form-label { font-size: 17px; }

@@ -1,0 +1,157 @@
+/* =========================================
+   NEW HEADER REDESIGN STYLES
+========================================= */
+.top-bar-new {
+    background-color: #1A1A1A;
+    color: #ffffff;
+    font-size: 17px ;
+    padding: 10px 0;
+}
+.top-bar-new i, .top-bar-new a, .top-bar-new span {
+    font-size: 17px ;
+}
+.top-bar-new a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.top-bar-new a:hover {
+    color: #C06B1F;
+}
+
+.navbar-new {
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 10px 0;
+    z-index: 1030;
+    position: sticky;
+    top: 0;
+}
+
+.logo-new a {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1A1A1A;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.logo-new .text-orange {
+    color: #C06B1F;
+}
+
+.menu-new {
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+.menu-new li a {
+    color: #1A1A1A;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+.menu-new li a:hover, .menu-new li a.active {
+    color: #C06B1F;
+}
+.menu-new li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #C06B1F;
+}
+
+.dropdown-new {
+    position: relative;
+}
+.dropdown-menu-new {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.3s ease;
+    list-style: none;
+}
+.dropdown-new:hover .dropdown-menu-new {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown-menu-new li a {
+    display: block;
+    padding: 8px 20px;
+    color: #555;
+    font-weight: 500;
+}
+.dropdown-menu-new li a:hover {
+    background: #f8f9fa;
+    color: #C06B1F;
+    padding-left: 25px;
+}
+
+.search-wrapper {
+    background: #f5f5f5;
+    border-radius: 50px;
+    padding: 4px 12px;
+    width: 250px;
+}
+.search-input-new {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 17px;
+    padding-right: 30px;
+}
+.search-btn-new {
+    background: transparent;
+    border: none;
+    color: #555;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-link-new {
+    color: #1A1A1A;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.icon-link-new:hover {
+    color: #C06B1F;
+}
+.badge-new {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #C06B1F;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+
+
+
+/* Typography Update */
+.menu-new > li > a, .dropdown-menu-new li a, .nav-link, .dropdown-item, .top-bar-new, .top-bar-new a, .top-bar-new span { font-size: 17px; }

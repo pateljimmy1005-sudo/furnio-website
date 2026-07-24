@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    @import './components/global.css';
+    @import './components/navbar.css';
+    @import './components/hero.css';
+    @import './components/products.css';
+    @import './components/checkout.css';
+    @import './components/footer.css';
+    @import './components/admin_legacy.css';
+}

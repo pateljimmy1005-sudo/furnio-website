@@ -3,21 +3,19 @@
     $wishlistCount = auth()->check() ? \App\Models\Wishlist::where('user_id', auth()->id())->count() : 0;
 @endphp
 
-<!-- HEADER WRAPPER -->
-
 <!-- TOP BAR -->
 <div class="top-bar-new" style="height: auto; min-height: 40px;">
     <div class="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center gap-2 gap-md-0 py-2">
         <div class="contact-info d-flex flex-wrap justify-content-center align-items-center gap-2 gap-md-4">
-            <span class="d-flex align-items-center m-0" style="font-size: clamp(11px, 2.5vw, 13px);"><i class="bi bi-telephone me-1"></i> +91 90993 23456</span>
-            <span class="d-flex align-items-center m-0" style="font-size: clamp(11px, 2.5vw, 13px);"><i class="bi bi-envelope me-1"></i> furnio@gmail.com</span>
+            <span class="d-flex align-items-center m-0"><i class="bi bi-telephone me-1"></i> +91 90993 23456</span>
+            <span class="d-flex align-items-center m-0"><i class="bi bi-envelope me-1"></i> furnio@gmail.com</span>
         </div>
 
         <div class="top-links d-flex align-items-center mt-1 mt-md-0">
             <div class="social-icons d-flex justify-content-center gap-3 m-0">
-                <a href="#" style="font-size: clamp(12px, 2.5vw, 14px);"><i class="bi bi-facebook"></i></a>
-                <a href="#" style="font-size: clamp(12px, 2.5vw, 14px);"><i class="bi bi-instagram"></i></a>
-                <a href="#" style="font-size: clamp(12px, 2.5vw, 14px);"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
             </div>
         </div>
     </div>
@@ -132,16 +130,20 @@
             @endauth
 
             @auth
-            <a href="/wishlist" class="mobile-icon-link text-dark text-decoration-none position-relative d-flex flex-column align-items-center">
-                <i class="bi bi-heart mb-1"></i>
+            <a href="/wishlist" class="mobile-icon-link text-dark text-decoration-none d-flex flex-column align-items-center">
+                <div class="position-relative d-inline-block">
+                    <i class="bi bi-heart mb-1"></i>
+                    <span class="badge-new mobile-badge-pos">{{ $wishlistCount }}</span>
+                </div>
                 <span class="mobile-icon-label">Wishlist</span>
-                <span class="badge-new mobile-badge-pos">{{ $wishlistCount }}</span>
             </a>
 
-            <a href="/cart" class="mobile-icon-link text-dark text-decoration-none position-relative d-flex flex-column align-items-center">
-                <i class="bi bi-cart3 mb-1"></i>
+            <a href="/cart" class="mobile-icon-link text-dark text-decoration-none d-flex flex-column align-items-center">
+                <div class="position-relative d-inline-block">
+                    <i class="bi bi-cart3 mb-1"></i>
+                    <span class="badge-new mobile-badge-pos">{{ $cartCount }}</span>
+                </div>
                 <span class="mobile-icon-label">Cart</span>
-                <span class="badge-new mobile-badge-pos">{{ $cartCount }}</span>
             </a>
             @endauth
         </div>

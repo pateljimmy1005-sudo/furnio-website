@@ -24,7 +24,18 @@
 
 <div class="furnio-container">
 
-    <h2 class="all-products-header mt-4 mb-5 text-center fs-3">Product Details</h2>
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-3 d-inline-block">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+
+    <div class="text-center mb-5 mt-2">
+        <h2 class="all-products-header section-title fw-bold" style="margin-bottom: 2px !important;">
+            Product Details
+        </h2>
+        <div class="d-flex justify-content-center align-items-center" style="margin-top: 2px;">
+            <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
+        </div>
+    </div>
 
     @php
         $originalPrice = $product->catalogPrice();

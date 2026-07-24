@@ -4,17 +4,28 @@
 
 <div class="container my-5">
 
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-4 d-inline-block">
+        <i class="bi bi-arrow-left"></i> Back 
+    </a>
+
     @if($search)
-        <a href="{{ route('store') }}" class="back-btn back-link ms-4 mt-4 d-inline-block">
-            <i class="bi bi-arrow-left"></i> Back 
-        </a>
-        <h2 class="search-results-header mt-4 mb-5 text-center fs-3">
-            Search Results for "{{ $search }}"
-        </h2>
+        <div class="text-center mb-5 mt-4">
+            <h2 class="search-results-header section-title fw-bold mb-1">
+                Search Results for "{{ $search }}"
+            </h2>
+            <div class="d-flex justify-content-center align-items-center mt-1">
+                <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
+            </div>
+        </div>
     @else
-        <h2 class="all-products-header mt-4 mb-5 text-center fs-3">
-            Our Products
-        </h2>
+        <div class="text-center mb-5 mt-4">
+            <h2 class="all-products-header section-title fw-bold mb-1">
+                Our Products
+            </h2>
+            <div class="d-flex justify-content-center align-items-center mt-1">
+                <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
+            </div>
+        </div>
     @endif
 
     @if($data->isEmpty())

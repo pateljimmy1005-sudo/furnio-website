@@ -3,13 +3,14 @@
 @section('content')
 
 <div class="store-container">
+
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn back-link search-back-link mb-3 d-inline-block">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+
     <div class="store-header">
         <div>
             @if($search)
-                <a href="{{ route('store') }}" class="back-btn back-link search-back-link">
-                    <i class="bi bi-arrow-left"></i> Back
-                    
-                </a>
                 <h2>Search Results for "{{ $search }}"</h2>
             @else
                 <h2>Advanced Search <span class="search-count">({{ $data->count() }} items)</span></h2>

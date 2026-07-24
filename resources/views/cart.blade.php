@@ -14,29 +14,17 @@
 
 <div class="cart-page">
 
-    <style>
-        .cart-page .cart-card .cart-image img.cart-responsive-img {
-            width: 150px !important;
-            height: 150px !important;
-            object-fit: cover !important;
-            border-radius: 10px !important;
-        }
-        @media (min-width: 768px) {
-            .cart-page .cart-card .cart-image img.cart-responsive-img {
-                width: 100px !important;
-                height: 100px !important;
-            }
-        }
-    </style>
-
     <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-bottom: 25px;">
         <i class="bi bi-arrow-left"></i> Back
     </a>
 
-    <div class="cart-title" style="margin-bottom: 40px;">
-
-        <h2 class="fs-3">My Shopping Cart</h2>
-
+    <div class="text-center mb-5 mt-3">
+        <h2 class="section-title all-products-header fw-bold" style="margin-bottom: 2px !important;">
+            My Shopping Cart
+        </h2>
+        <div class="d-flex justify-content-center align-items-center" style="margin-top: 2px;">
+            <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
+        </div>
     </div>
 
 
@@ -96,7 +84,7 @@
                 <div class="cart-card">
 
                     {{-- PRODUCT IMAGE --}}
-                    <div class="cart-image mb-3 text-center">
+                    <div class="cart-image">
                         <img src="{{ $item->product->imageUrl() }}"
                              alt="{{ $item->product->catalogName() }}"
                              class="cart-responsive-img">
@@ -108,13 +96,9 @@
                     {{-- PRODUCT DETAILS --}}
                     <div class="cart-details">
 
-                        <h3 style="font-size: 18px;">
-
+                        <h3>
                             {{ $item->product->catalogName() }}
-
                         </h3>
-
-
 
                         {{-- RATING --}}
                         <div class="rating">
@@ -127,13 +111,10 @@
                             @endfor
                         </div>
 
-
-
-
                         {{-- PRICE BOX --}}
-                        <div class="price-box d-flex flex-column flex-md-row justify-content-center align-items-center gap-1 gap-md-2 mb-2">
+                        <div class="price-box d-flex align-items-center gap-2 mb-2">
                             {{-- FINAL PRICE --}}
-                            <h4 style="font-size: 18px !important; margin: 0;">
+                            <h4>
                                 ₹{{ number_format($finalPrice, 2) }}
                             </h4>
 
@@ -181,7 +162,7 @@
 
 
                         {{-- BUTTONS --}}
-                        <div class="cart-buttons d-flex flex-column flex-md-row gap-2 w-100 mt-2">
+                        <div class="cart-buttons d-flex flex-row gap-2 w-100 mt-2">
                             <a href="{{ route('image.detail', $item->product->id) }}" class="w-100 text-center" style="display: flex; justify-content: center; align-items: center;">
                                 View
                             </a>
@@ -205,10 +186,8 @@
         {{-- RIGHT SIDE --}}
         <div class="cart-right">
 
-            <h3 style="font-size: 18px; margin-bottom: 20px;">
-
+            <h3>
                 PRICE DETAILS
-
             </h3>
 
 

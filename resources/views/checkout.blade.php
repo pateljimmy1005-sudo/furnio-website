@@ -180,23 +180,18 @@
                             </div>
 
                             <div class="checkout-item-details">
-                                <h3 class="checkout-item-name" style="font-size: 17px !important;">
+                                <h3 class="checkout-item-name">
                                     {{ $item->product->catalogName() }}
                                 </h3>
-                                <p class="checkout-item-qty">
+                                <div class="checkout-item-price-row d-flex align-items-center gap-2 mt-1">
+                                    <span class="checkout-item-price">₹{{ number_format($item->subtotal, 2) }}</span>
+                                    @if($item->discount > 0)
+                                        <del class="checkout-item-original-price">₹{{ number_format($item->original_price * $item->quantity, 2) }}</del>
+                                    @endif
+                                </div>
+                                <p class="checkout-item-qty mt-1 mb-0">
                                     Qty: {{ $item->quantity }}
                                 </p>
-                            </div>
-
-                            <div class="checkout-item-pricing">
-                                <span class="checkout-item-price">
-                                    ₹{{ number_format($item->subtotal, 2) }}
-                                </span>
-                                @if($item->discount > 0)
-                                    <del class="checkout-item-original-price">
-                                        ₹{{ number_format($item->original_price * $item->quantity, 2) }}
-                                    </del>
-                                @endif
                             </div>
 
                         </div>

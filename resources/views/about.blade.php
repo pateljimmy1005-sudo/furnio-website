@@ -2,24 +2,6 @@
 
 @section('content')
 
-<style>
-    /* Specific Typography Adjustments for this page */
-    @media (min-width: 992px) {
-        p, span, label, input, textarea, button, .list-group-item, li {
-            font-size: 17px !important;
-        }
-        h1 {
-            font-size: 2.2rem !important; /* ~35px */
-        }
-        h2 {
-            font-size: 26px !important;
-        }
-    }
-    /* Fix spans inside headings from becoming tiny */
-    h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
-        font-size: inherit !important;
-    }
-</style>
 
 
     <!-- HERO SECTION -->
@@ -44,6 +26,11 @@
 
     <!-- ABOUT -->
     <section class="about-section">
+        <div class="container mb-4">
+            <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-block">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+        </div>
         <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-5">
             <div class="about-left">
 
@@ -94,7 +81,7 @@
     </section>
 
     <!-- MISSION & VISION -->
-    <section class="feature-section">
+    <section class="about-mission-section">
         <div class="container">
             <div class="feature-grid">
 
@@ -115,9 +102,9 @@
     </section>
 
     <!-- SERVICES -->
-    <section class="feature-section">
+    <section class="about-services-section">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <h2 class="mb-2 fs-2 fw-bold">Our Services</h2>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="title-line"></div>
@@ -155,9 +142,9 @@
     </section>
 
     <!-- PRODUCT CATEGORIES -->
-    <section class="feature-section">
+    <section class="about-categories-section">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
             <h2 class="mb-2 fs-2 fw-bold">Product Categories</h2>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="title-line"></div>
@@ -213,9 +200,9 @@
     </section>
 
     <!-- WHY CHOOSE US -->
-    <section class="feature-section">
+    <section class="about-why-section">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
             <h2 class="mb-2 fs-2 fw-bold">Why Choose Us</h2>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="title-line"></div>

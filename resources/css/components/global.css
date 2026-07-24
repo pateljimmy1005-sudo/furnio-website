@@ -92,4 +92,4 @@ body {
 }
 
 /* Typography Update */
-.btn-main, .btn-outline, .btn-secondary, .form-control, .form-label { font-size: 17px; }
+.btn-main, .btn-outline, .btn-secondary, .form-control, .form-label { font-size: var(--font-btn-desktop, 1.0625rem); }

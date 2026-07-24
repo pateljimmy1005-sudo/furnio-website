@@ -4,9 +4,18 @@
 
 <div class="container my-5">
 
-    <h2 class="all-products-header mt-4 mb-5 text-center fs-3">
-        {{ ucfirst($name) }} Products
-    </h2>
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-4 d-inline-block">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+
+    <div class="text-center mb-5 mt-2">
+        <h2 class="all-products-header section-title fw-bold mb-1">
+            {{ ucfirst($name) }} Products
+        </h2>
+        <div class="d-flex justify-content-center align-items-center mt-1">
+            <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
+        </div>
+    </div>
 
     @if($products->isEmpty())
         <div class="no-products-section">

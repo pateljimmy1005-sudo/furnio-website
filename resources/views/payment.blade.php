@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+<div class="container py-3">
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('cart') }}" class="back-btn d-inline-block">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+</div>
+<div class="container py-4 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
 @if($isMock)
     <div class="card shadow-sm border-0 rounded-4 w-100" style="max-width: 600px;">
         <div class="card-body p-5 text-center">

@@ -2,29 +2,6 @@
 
 @section('content')
 
-<style>
-    /* Specific Typography Adjustments for this page */
-    @media (min-width: 992px) {
-        p, span, label, input, textarea, button, .list-group-item, li {
-            font-size: 17px !important;
-        }
-    }
-    /* Fix spans inside headings from becoming tiny */
-    h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
-        font-size: inherit !important;
-    }
-
-    /* Social Icons Hover Color */
-    .contact-info .social-icons a:hover {
-        color: white !important;
-    }
-    
-    .contact-info .social-icons a:hover i {
-        color: white !important;
-    }
-</style>
-
-
 <!-- HERO SECTION -->
 <section class="contact-hero">
     <div class="overlay"></div>
@@ -36,6 +13,9 @@
 
 <section class="contact-section">
     <div class="container">
+        <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-4 d-inline-block">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
         <div class="contact-grid">
             <div class="contact-info">
                 <h2>Get In Touch</h2>
@@ -72,7 +52,7 @@
                         </div>
                     </div>
                     
-                    <div class="social-icons mt-5">
+                    <div class="social-icons mt-3 mt-md-5">
                         <a href="#"><i class="bi bi-facebook"></i></a>
                         <a href="#"><i class="bi bi-instagram"></i></a>
                         <a href="#"><i class="bi bi-twitter-x"></i></a>

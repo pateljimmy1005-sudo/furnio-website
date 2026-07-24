@@ -4,11 +4,13 @@
 .top-bar-new {
     background-color: #1A1A1A;
     color: #ffffff;
-    font-size: 17px ;
+    font-size: 17px;
     padding: 10px 0;
+    position: relative;
+    z-index: 10;
 }
 .top-bar-new i, .top-bar-new a, .top-bar-new span {
-    font-size: 17px ;
+    font-size: 17px;
 }
 .top-bar-new a {
     color: #ffffff;
@@ -20,12 +22,16 @@
 }
 
 .navbar-new {
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1040 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
     padding: 10px 0;
-    z-index: 1030;
-    position: sticky;
-    top: 0;
 }
 
 .logo-new a {
@@ -154,4 +160,4 @@
 
 
 /* Typography Update */
-.menu-new > li > a, .dropdown-menu-new li a, .nav-link, .dropdown-item, .top-bar-new, .top-bar-new a, .top-bar-new span { font-size: 17px; }
+.menu-new > li > a, .dropdown-menu-new li a, .nav-link, .dropdown-item, .top-bar-new, .top-bar-new a, .top-bar-new span { font-size: var(--font-nav-desktop, 1.0625rem); }

@@ -7542,6 +7542,25 @@ body, p, ul, ol, li, a, label, input, textarea, select, table, th, td, blockquot
     align-items: center;
     flex-shrink: 0;
 }
+.badge-new {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: #C06B1F;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    z-index: 2;
+}
 .checkout-item-image {
     width: 100%;
     height: 100%;

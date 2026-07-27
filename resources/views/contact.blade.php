@@ -13,9 +13,6 @@
 
 <section class="contact-section">
     <div class="container">
-        <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-4 d-inline-block">
-            <i class="bi bi-arrow-left"></i> Back
-        </a>
         <div class="contact-grid">
             <div class="contact-info">
                 <h2>Get In Touch</h2>

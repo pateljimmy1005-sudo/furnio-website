@@ -655,85 +655,116 @@ body {
 .sidebar {
     width: 260px;
     height: 100vh;
-    background-color: var(--theme-dark);
+    background-color: var(--theme-dark, #1A1A1A);
     position: fixed;
     top: 0;
     left: 0;
-    padding: 25px 20px;
+    padding: 20px 15px;
     overflow-y: auto;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.05);
-    z-index: 1000;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+    z-index: 1050;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sidebar h3 {
-    font-size: 28px;
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+
+.sidebar-title {
+    color: #ffffff;
+    font-size: 22px;
     font-weight: 800;
-    text-align: center;
-    padding-bottom: 25px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 25px;
-    color: var(--theme-primary);
-    letter-spacing: -0.5px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.sidebar-close-btn {
+    display: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.sidebar-close-btn:hover {
+    opacity: 1;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
 }
 
 .sidebar a {
     display: flex;
     align-items: center;
-    padding: 14px 20px;
-    color: rgba(255,255,255,0.7);
+    width: 100%;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
-    font-size: 17px;
-    font-weight: 600;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: all 0.25s ease;
 }
 
 .sidebar a i {
-    margin-right: 12px;
-    font-size: 24px;
+    min-width: 26px;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 10px;
 }
 
-/* Hover Effects */
 .sidebar a:hover {
-    background-color: rgba(255,255,255,0.05);
-    color: var(--theme-white);
-    transform: translateX(4px);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
 }
 
 .sidebar a.active {
-    background-color: var(--theme-primary);
-    color: var(--theme-white);
-    box-shadow: 0 4px 15px rgba(192, 107, 31, 0.3);
-}
-
-.sidebar form {
-    margin-top: auto;
-    padding-top: 25px;
-}
-
-/* Logout Button */
-.sidebar .btn1 {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(255,255,255,0.1);
-    border: none;
-    color: var(--theme-white);
-    padding: 14px;
-    font-size: 17px;
+    background-color: var(--theme-primary, #C06B1F);
+    color: #ffffff;
     font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(192, 107, 31, 0.35);
 }
 
-.sidebar .btn1:hover {
-    background-color: #ef4444;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+.sidebar-logout-form {
+    margin-top: 15px;
+    padding-top: 15px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.admin-logout-btn:hover {
+    background-color: #bb2d3b;
+    color: #ffffff;
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -1038,37 +1069,16 @@ body {
 }
 
 @media (max-width: 767.98px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 20px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .sidebar h3 {
-        width: 100%;
-        border-bottom: none;
-        margin-bottom: 10px;
-        padding-bottom: 0;
-    }
-    
     .sidebar a {
-        padding: 10px 16px;
-        margin: 5px;
-    }
-    
-    .sidebar form {
+        padding: 12px 16px;
+        margin-bottom: 4px;
         width: 100%;
-        padding-top: 15px;
     }
     
-    .sidebar .btn1 {
-        width: auto;
-        display: inline-block;
-        padding: 10px 30px;
+    .sidebar-logout-form {
+        width: 100%;
+        margin-top: 15px;
+        padding-top: 15px;
     }
     
     .content {
@@ -1096,7 +1106,7 @@ body {
    ========================================= */
 
 /* Specific Admin Buttons & Inputs */
-.btn10, .bttn, .dashboard-btn, 
+.btn10, .bttn, 
 .order-page .btn-secondary, 
 .order-page .btn-primary,
 .order-page .btn-success,
@@ -1108,7 +1118,7 @@ body {
     color: #ffffff !important;
 }
 
-.btn10:hover, .bttn:hover, .dashboard-btn:hover, 
+.btn10:hover, .bttn:hover, 
 .order-page .btn-secondary:hover, 
 .order-page .btn-primary:hover,
 .order-page .btn-success:hover {
@@ -1118,11 +1128,132 @@ body {
     opacity: 0.9;
 }
 
+/* Universal Brand Theme Back Button Component for Admin */
+.dashboard-btn,
+.admin-btn-back,
+.back-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    background-color: #FFF4EC !important;
+    color: #C06B1F !important;
+    border: 1px solid #FED7AA !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 6px rgba(192, 107, 31, 0.08) !important;
+    cursor: pointer !important;
+}
+
+.dashboard-btn i,
+.admin-btn-back i,
+.back-btn i {
+    font-size: 14px !important;
+    color: #C06B1F !important;
+    transition: transform 0.3s ease !important;
+}
+
+.dashboard-btn:hover,
+.admin-btn-back:hover,
+.back-btn:hover {
+    background-color: #C06B1F !important;
+    color: #FFFFFF !important;
+    border-color: #C06B1F !important;
+    box-shadow: 0 4px 12px rgba(192, 107, 31, 0.2) !important;
+    transform: translateX(-3px) !important;
+}
+
+.dashboard-btn:hover i,
+.admin-btn-back:hover i,
+.back-btn:hover i {
+    color: #FFFFFF !important;
+    transform: translateX(-2px) !important;
+}
+
 /* Pagination */
 .pagination .page-item.active .page-link {
     background-color: var(--theme-primary) !important;
     border-color: var(--theme-primary) !important;
     color: #ffffff !important;
+}
+
+/* =========================================
+   SIMPLE CLEAN ADMIN TABLE & PAGE STYLING
+   ========================================= */
+
+/* Action Icon Square Buttons */
+.btn-action-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    background-color: #ffffff !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+.btn-action-edit {
+    border: 1.5px solid #0d6efd !important;
+    color: #0d6efd !important;
+}
+
+.btn-action-edit:hover {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+.btn-action-delete {
+    border: 1.5px solid #dc3545 !important;
+    color: #dc3545 !important;
+}
+
+.btn-action-delete:hover {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+/* Table Pill Badges */
+.badge-category-pill {
+    background-color: #f1f3f5 !important;
+    color: #343a40 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 5px 14px !important;
+    border-radius: 50px !important;
+    border: 1px solid #e9ecef !important;
+    display: inline-block !important;
+}
+
+.badge-stock-pill-in {
+    background-color: #d1e7dd !important;
+    color: #0f5132 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 5px 14px !important;
+    border-radius: 50px !important;
+    border: 1px solid #badbcc !important;
+    display: inline-block !important;
+}
+
+.badge-stock-pill-out {
+    background-color: #f8d7da !important;
+    color: #842029 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 5px 14px !important;
+    border-radius: 50px !important;
+    border: 1px solid #f5c2c7 !important;
+    display: inline-block !important;
 }
 .pagination .page-link {
     color: var(--theme-primary) !important;

@@ -24,13 +24,7 @@
     </section>
 
 
-    <!-- ABOUT -->
     <section class="about-section">
-        <div class="container mb-4">
-            <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-block">
-                <i class="bi bi-arrow-left"></i> Back
-            </a>
-        </div>
         <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-5">
             <div class="about-left">
 

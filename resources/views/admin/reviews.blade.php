@@ -4,7 +4,7 @@
 
 <div class="container-fluid mt-4">
     <div class="mb-3">
-        <a href="{{ route('admin.dashboard') }}" class="dashboard-btn m-0 d-inline-block">← Back</a>
+        <a href="{{ route('admin.dashboard') }}" class="dashboard-btn"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
     
 

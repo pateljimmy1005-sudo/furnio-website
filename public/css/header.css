@@ -142,18 +142,22 @@
 .badge-new {
     position: absolute;
     top: -5px;
-    right: -10px;
+    right: -8px;
     background: #C06B1F;
     color: #ffffff;
-    font-size: 11px;
-    font-weight: bold;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 

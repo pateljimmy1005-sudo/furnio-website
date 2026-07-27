@@ -24,7 +24,6 @@
         h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .page-title, .section-title, .hero-title-shadow {
             font-family: 'Nunito', sans-serif !important;
         }
-        /* Ensure font weights look good */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700 !important;
         }
@@ -34,10 +33,10 @@
 
 <body>
 
-<!-- Mobile Header (Visible only on mobile) -->
+<!-- Mobile Header (Visible only on mobile/tablet) -->
 <div class="mobile-admin-header">
-    <h3 class="m-0 text-white">FURNIO ADMIN</h3>
-    <button class="mobile-toggle-btn" onclick="toggleAdminSidebar()">
+    <h3 class="m-0 text-white fw-bold">FURNIO ADMIN</h3>
+    <button class="mobile-toggle-btn" onclick="toggleAdminSidebar()" aria-label="Toggle Navigation">
         <i class="fas fa-bars"></i>
     </button>
 </div>
@@ -46,55 +45,54 @@
 
 <div class="sidebar" id="adminSidebar">
 
-    <!-- Close button for mobile -->
-    <div class="sidebar-close-btn" onclick="toggleAdminSidebar()">
-        <i class="fas fa-times"></i>
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">FURNIO ADMIN</h3>
+        <div class="sidebar-close-btn" onclick="toggleAdminSidebar()">
+            <i class="fas fa-times"></i>
+        </div>
     </div>
 
-    <h3 class="text-white mb-4 sidebar-desktop-title">
-        FURNIO ADMIN
-    </h3>
+    <div class="sidebar-nav">
+        <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <i class="fas fa-home me-2"></i> <span>Dashboard</span>
+        </a>
 
-    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" >
-        <i class="fas fa-home me-2"></i> Dashboard
-    </a>
+        <a href="{{ route('admin.products') }}" class="{{ request()->routeIs('admin.products') || request()->routeIs('admin.product.*') ? 'active' : '' }}">
+            <i class="fas fa-list-alt me-2"></i> <span>Products</span>
+        </a>
 
-    <a href="{{ route('admin.products') }}" class="{{ request()->routeIs('admin.products') || request()->routeIs('admin.product.*') ? 'active' : '' }}" >
-        <i class="fas fa-list-alt me-2"></i> Products
-    </a>
+        <a href="{{ route('admin.orders') }}" class="{{ request()->routeIs('admin.orders') ? 'active' : '' }}">
+            <i class="fas fa-shopping-cart me-2"></i> <span>Orders</span>
+        </a>
 
-    <a href="{{ route('admin.orders') }}" class="{{ request()->routeIs('admin.orders') ? 'active' : '' }}" >
-        <i class="fas fa-shopping-cart me-2"></i> Orders
-    </a>
+        <a href="{{ route('admin.sales-report') }}" class="{{ request()->routeIs('admin.sales-report') ? 'active' : '' }}">
+            <i class="fas fa-chart-line me-2"></i> <span>Sales Reports</span>
+        </a>
 
-    <a href="{{ route('admin.sales-report') }}" class="{{ request()->routeIs('admin.sales-report') ? 'active' : '' }}" >
-        <i class="fas fa-chart-line me-2"></i> Sales Reports
-    </a>
+        <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users') || request()->routeIs('admin.user.*') ? 'active' : '' }}">
+            <i class="fas fa-users me-2"></i> <span>Users</span>
+        </a>
 
-    <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users') || request()->routeIs('admin.user.*') ? 'active' : '' }}" >
-        <i class="fas fa-users me-2"></i> Users
-    </a>
+        <a href="{{ route('admin.contacts') }}" class="{{ request()->routeIs('admin.contacts') ? 'active' : '' }}">
+            <i class="fas fa-headset me-2"></i> <span>Contacts</span>
+        </a>
 
-    <a href="{{ route('admin.contacts') }}" class="{{ request()->routeIs('admin.contacts') ? 'active' : '' }}" >
-        <i class="fas fa-headset me-2"></i> Contacts
-    </a>
+        <a href="{{ route('admin.reviews') }}" class="{{ request()->routeIs('admin.reviews') ? 'active' : '' }}">
+            <i class="fas fa-star me-2"></i> <span>Reviews</span>
+        </a>
+    </div>
 
-    <a href="{{ route('admin.reviews') }}" class="{{ request()->routeIs('admin.reviews') ? 'active' : '' }}" >
-        <i class="fas fa-star me-2"></i> Reviews
-    </a>
-
-<form method="POST" action="{{ route('logout') }}" class="mt-4 px-2">
-    @csrf
-
-    <button type="submit" class="admin-logout-btn w-100">
-        <i class="fas fa-sign-out-alt me-2"></i> Logout
-    </button>
-</form>
+    <form method="POST" action="{{ route('logout') }}" class="sidebar-logout-form">
+        @csrf
+        <button type="submit" class="admin-logout-btn">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </button>
+    </form>
 
 </div>
 
 <div class="content">
-    <div class="container my-4">
+    <div class="container-fluid my-3 px-2 px-md-4">
         @yield('content')
     </div>
 </div>

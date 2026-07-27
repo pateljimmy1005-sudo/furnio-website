@@ -4,7 +4,7 @@
 
 <div class="order-page">
 
-    <a href="{{ route('admin.dashboard') }}" class="dashboard-btn mb-4 d-inline-block">← Back</a>
+    <a href="{{ route('admin.dashboard') }}" class="dashboard-btn mb-4"><i class="fas fa-arrow-left"></i> Back</a>
 
     <div class="card shadow border-0 admin-card-standard">
         <div class="card-header bg-white d-flex justify-content-center justify-content-sm-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">

@@ -131,7 +131,7 @@
 
             @auth
             <a href="/wishlist" class="mobile-icon-link text-dark text-decoration-none d-flex flex-column align-items-center">
-                <div class="position-relative d-inline-block">
+                <div class="position-relative d-inline-flex align-items-center justify-content-center">
                     <i class="bi bi-heart mb-1"></i>
                     <span class="badge-new mobile-badge-pos">{{ $wishlistCount }}</span>
                 </div>
@@ -139,7 +139,7 @@
             </a>
 
             <a href="/cart" class="mobile-icon-link text-dark text-decoration-none d-flex flex-column align-items-center">
-                <div class="position-relative d-inline-block">
+                <div class="position-relative d-inline-flex align-items-center justify-content-center">
                     <i class="bi bi-cart3 mb-1"></i>
                     <span class="badge-new mobile-badge-pos">{{ $cartCount }}</span>
                 </div>

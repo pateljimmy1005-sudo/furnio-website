@@ -5,7 +5,7 @@
 <div class="container-fluid mt-4">
 
     <div class="d-flex justify-content-start mb-3">
-        <a href="{{ route('admin.dashboard') }}" class="dashboard-btn m-0 d-inline-block m-0">← Back</a>
+        <a href="{{ route('admin.dashboard') }}" class="dashboard-btn"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="card shadow border-0 admin-card-standard">

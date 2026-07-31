@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container my-5">
 <div class="invoice-page">
     <div class="invoice-container">
         <div class="invoice-header-top" style="margin-top: -30px;">
@@ -126,7 +127,8 @@
                 <p class="invoice-footer-note">For any queries, contact us at furnio@gmaile.com</p>
             </div>
         </div>
-    </div>
+</div>
+</div>
 </div>
 @endsection
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

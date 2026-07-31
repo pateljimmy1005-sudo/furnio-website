@@ -2,6 +2,34 @@
 
 @section('content')
 
+<style>
+    /* Completely disable card lift, movement, and transforms on hover */
+    .card,
+    .card:hover,
+    .admin-card-standard,
+    .admin-card-standard:hover,
+    .admin-section-card,
+    .admin-section-card:hover,
+    .dashboard-btn,
+    .dashboard-btn:hover,
+    .admin-btn-primary,
+    .admin-btn-primary:hover,
+    .admin-btn-secondary,
+    .admin-btn-secondary:hover,
+    .admin-form-input,
+    .admin-form-input:hover,
+    .admin-form-select,
+    .admin-form-select:hover,
+    .admin-form-textarea,
+    .admin-form-textarea:hover,
+    div,
+    div:hover {
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+</style>
+
 <div class="container-fluid mt-4">
     <div class="mb-3">
         <a href="{{ route('admin.products') }}" class="dashboard-btn"><i class="fas fa-arrow-left"></i> Back</a>
@@ -119,11 +147,11 @@
                 </div>
 
                 <!-- Buttons -->
-                <div class="admin-form-actions mt-4 d-flex flex-wrap justify-content-start gap-2 gap-sm-3 border-top pt-4">
-                    <a href="{{ route('admin.products') }}" class="admin-btn-secondary px-3 px-sm-4 py-1 py-sm-2 text-decoration-none text-center" style="font-size: 14px;">
+                <div class="admin-form-actions mt-4 d-flex flex-wrap justify-content-start gap-3 border-top pt-4">
+                    <a href="{{ route('admin.products') }}" class="admin-btn-secondary">
                         Cancel
                     </a>
-                    <button type="submit" class="admin-btn-primary px-3 px-sm-4 py-1 py-sm-2 border-0 text-center" style="border-radius: 8px; font-size: 14px;">
+                    <button type="submit" class="admin-btn-primary">
                         Update Product
                     </button>
                 </div>

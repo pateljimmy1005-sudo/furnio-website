@@ -11,14 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->index([\DB::raw('category(191)')], 'products_category_index');
+        $isSqlite = \Illuminate\Support\Facades\DB::getDriverName() === 'sqlite';
+
+        Schema::table('products', function (Blueprint $table) use ($isSqlite) {
+            $col = $isSqlite ? 'category' : [\Illuminate\Support\Facades\DB::raw('category(191)')];
+            $table->index($col, 'products_category_index');
         });
 
-        Schema::table('orders', function (Blueprint $table) {
-            $table->index([\DB::raw('status(191)')], 'orders_status_index');
-            $table->index([\DB::raw('payment_status(191)')], 'orders_payment_status_index');
-            $table->index([\DB::raw('payment_method(191)')], 'orders_payment_method_index');
+        Schema::table('orders', function (Blueprint $table) use ($isSqlite) {
+            $statusCol = $isSqlite ? 'status' : [\Illuminate\Support\Facades\DB::raw('status(191)')];
+            $paymentStatusCol = $isSqlite ? 'payment_status' : [\Illuminate\Support\Facades\DB::raw('payment_status(191)')];
+            $paymentMethodCol = $isSqlite ? 'payment_method' : [\Illuminate\Support\Facades\DB::raw('payment_method(191)')];
+
+            $table->index($statusCol, 'orders_status_index');
+            $table->index($paymentStatusCol, 'orders_payment_status_index');
+            $table->index($paymentMethodCol, 'orders_payment_method_index');
         });
     }
 

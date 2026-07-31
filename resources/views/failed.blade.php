@@ -2,6 +2,12 @@
 
 @section('content')
 
+<div class="container my-5">
+
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-block" style="margin-bottom: 25px !important;">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+
 <div class="success-page failed-page-wrapper">
 
     <div class="success-card failed-card">
@@ -44,6 +50,7 @@
 
     </div>
 
+</div>
 </div>
 
 @endsection

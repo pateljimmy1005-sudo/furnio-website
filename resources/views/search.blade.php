@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="container my-5">
 <div class="store-container">
 
     <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn back-link search-back-link mb-3 d-inline-block">
@@ -150,6 +151,7 @@
 
         </div>
     @endif
+</div>
 </div>
 
 @endsection

@@ -51,23 +51,23 @@
             <div class="counter-grid">
 
             <div class="counter-box">
-                <h1>10K+</h1>
+                <h1>{{ number_format($stats['customers'] ?? 1250) }}+</h1>
                 <p>Happy Customers</p>
             </div>
 
             <div class="counter-box">
-                <h1>15K+</h1>
-                <p>Products Delivered</p>
+                <h1>{{ number_format($stats['products'] ?? 50) }}+</h1>
+                <p>Products Available</p>
             </div>
 
             <div class="counter-box">
-                <h1>500+</h1>
+                <h1>{{ number_format($stats['reviews'] ?? 500) }}+</h1>
                 <p>5 Star Reviews</p>
             </div>
 
             <div class="counter-box">
-                <h1>25+</h1>
-                <p>Cities Served</p>
+                <h1>{{ number_format($stats['orders'] ?? 1500) }}+</h1>
+                <p>Orders Delivered</p>
             </div>
 
         </div>

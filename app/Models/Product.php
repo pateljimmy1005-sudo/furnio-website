@@ -41,24 +41,30 @@ class Product extends Model
     {
         $image = trim((string) $this->image);
 
-        if ($image === '') {
-            $featured = $this->relationLoaded('images')
-                ? $this->images->firstWhere('is_featured', true) ?? $this->images->first()
-                : $this->images()->where('is_featured', true)->first()
-                    ?? $this->images()->orderBy('sort_order')->first();
+        if ($image !== '') {
+            if (str_contains($image, '/')) {
+                $cleanPath = ltrim($image, '/');
+                if (file_exists(public_path($cleanPath))) {
+                    return asset($cleanPath);
+                }
+            }
 
-            return $featured ? $featured->imageUrl() : asset('images/placeholder.svg');
+            if (file_exists(public_path('uploads/products/' . $image))) {
+                return asset('uploads/products/' . $image);
+            }
+
+            $imgName = ltrim($image, '/');
+            if (file_exists(public_path('images/' . $imgName))) {
+                return asset('images/' . $imgName);
+            }
         }
 
-        if (str_contains($image, '/')) {
-            return asset($image);
-        }
+        $featured = $this->relationLoaded('images')
+            ? $this->images->firstWhere('is_featured', true) ?? $this->images->first()
+            : $this->images()->where('is_featured', true)->first()
+                ?? $this->images()->orderBy('sort_order')->first();
 
-        if (file_exists(public_path('uploads/products/' . $image))) {
-            return asset('uploads/products/' . $image);
-        }
-
-        return asset('images/' . ltrim($image, '/'));
+        return $featured ? $featured->imageUrl() : asset('images/placeholder.svg');
     }
 
     public function hasInvalidPrice(): bool

@@ -12,6 +12,7 @@
 
 
 
+<div class="container my-5">
 <div class="cart-page">
 
     <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-bottom: 25px;">
@@ -282,6 +283,7 @@
 
     @endif
 
+</div>
 </div>
 
 @endsection

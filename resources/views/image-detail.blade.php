@@ -22,20 +22,11 @@
 @endif
 
 
-<div class="furnio-container">
-
-    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-3 d-inline-block">
+<div class="container my-4">
+    
+    <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-block" style="margin-bottom: 25px !important;">
         <i class="bi bi-arrow-left"></i> Back
     </a>
-
-    <div class="text-center mb-5 mt-2">
-        <h2 class="all-products-header section-title fw-bold" style="margin-bottom: 2px !important;">
-            Product Details
-        </h2>
-        <div class="d-flex justify-content-center align-items-center" style="margin-top: 2px;">
-            <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
-        </div>
-    </div>
 
     @php
         $originalPrice = $product->catalogPrice();
@@ -230,7 +221,7 @@
     @forelse($product->reviews as $review)
         <div class="review-box p-4 bg-light rounded-4 mb-3 border-0">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <strong class="text-dark fs-5" style="font-family: 'Playfair Display', serif;">{{ $review->user->name }}</strong>
+                <strong class="text-dark fs-5" style="font-family: 'Playfair Display', serif;">{{ $review->user->name ?? 'Customer' }}</strong>
                 <small class="text-muted">{{ $review->created_at->format('d M Y') }}</small>
             </div>
 

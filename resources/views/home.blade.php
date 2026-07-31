@@ -3,7 +3,11 @@
 @section('content')
 
     @include('partials.hero')
-    
+
     @include('partials.categories')
-    
+
+
+
+
+
 @endsection

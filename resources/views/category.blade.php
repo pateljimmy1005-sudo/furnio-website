@@ -10,7 +10,7 @@
 
     <div class="text-center mb-5 mt-2">
         <h2 class="all-products-header section-title fw-bold mb-1">
-            {{ ucfirst($name) }} Products
+            {{ ucfirst(str_replace('+', ' ', $name)) }} Products
         </h2>
         <div class="d-flex justify-content-center align-items-center mt-1">
             <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
@@ -92,7 +92,7 @@
 
                     <!-- Button -->
                     <a href="{{ route('image.detail', $img->id) }}" class="btn-primary btn-view-details">
-                        View Details
+                        View Details <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>
 
                 </div>

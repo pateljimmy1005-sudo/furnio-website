@@ -3,7 +3,7 @@
 @section('content')
 <style>
     @media (min-width: 992px) {
-        .dash-stat-trend, .dash-stat-label, .dash-low-stock-count, .dash-low-stock-item, .dash-table-td, .dash-table-th, .dash-badge, .dash-product-stock, .dash-product-name, .dash-chart-scale-numbers span {
+        .dash-low-stock-count, .dash-low-stock-item, .dash-table-td, .dash-table-th, .dash-badge, .dash-product-stock, .dash-product-name, .dash-chart-scale-numbers span {
             font-size: 17px !important;
         }
     }
@@ -24,66 +24,70 @@
         max="{{ now()->format('Y-m-d') }}" style="max-width: 200px;">
 </div>
 
-<div class="row g-4 mb-4">
+<div class="row g-3 mb-4">
 
-    <!-- Card 1 (Restored) -->
+    <!-- Card 1: Total Products -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Total Products</div>
-                <div class="fw-bold mb-2 dash-stat-value">{{ $products }}</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Total Products</div>
+                <div class="dash-stat-value">{{ $products }}</div>
                 <div class="dash-stat-trend">&#8593; 12% vs last month</div>
             </div>
         </div>
     </div>
 
-    <!-- Replace following cols to be responsive as well -->
+    <!-- Card 2: Total Orders -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Total Orders</div>
-                <div class="fw-bold mb-2 dash-stat-value">{{ $orders }}</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Total Orders</div>
+                <div class="dash-stat-value">{{ $orders }}</div>
                 <div class="dash-stat-trend">&#8593; 8%</div>
             </div>
         </div>
     </div>
 
+    <!-- Card 3: Total Users -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Total Users</div>
-                <div class="fw-bold mb-2 dash-stat-value">{{ $users }}</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Total Users</div>
+                <div class="dash-stat-value">{{ $users }}</div>
                 <div class="dash-stat-trend">&#8593; 5%</div>
             </div>
         </div>
     </div>
 
+    <!-- Card 4: Total Revenue -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Total Revenue</div>
-                <div class="fw-bold mb-2 dash-stat-value">&#8377;{{ number_format($totalRevenue) }}</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Total Revenue</div>
+                <div class="dash-stat-value">&#8377;{{ number_format($totalRevenue) }}</div>
                 <div class="dash-stat-trend">&#8593; 18%</div>
             </div>
         </div>
     </div>
 
+    <!-- Card 5: Today's Orders -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Today's Orders</div>
-                <div class="fw-bold mb-2 dash-stat-value">{{ $todayOrders }}</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Today's Orders</div>
+                <div class="dash-stat-value">{{ $todayOrders }}</div>
                 <div class="dash-stat-trend">&#8593; 150%</div>
             </div>
         </div>
     </div>
 
+    <!-- Card 6: Low Stock -->
     <div class="col-12 col-sm-6 col-md-4 col-xl-2">
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body">
-                <div class="text-muted mb-1 dash-stat-label">Low Stock</div>
-                <div class="fw-bold mb-2 dash-stat-value">{{ $lowStockItems }}</div>
-                <div class="dash-stat-trend">&#8595; 5%</div>
+        <div class="card dash-stat-card shadow-sm border-0 h-100">
+            <div class="card-body p-3">
+                <div class="dash-stat-label">Low Stock</div>
+                <div class="dash-stat-value">{{ $lowStockItems }}</div>
+                <div class="dash-stat-trend dash-stat-trend-down">&#8595; 5%</div>
             </div>
         </div>
     </div>

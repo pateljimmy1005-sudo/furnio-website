@@ -4,7 +4,7 @@
 
 <div class="checkout-page">
 
-    <div class="container">
+    <div class="container my-5">
         
         <div class="checkout-back-link-wrapper">
             <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('cart') }}" class="back-btn">
@@ -123,7 +123,7 @@
                                            value="cod" 
                                            class="checkout-payment-radio"
                                            checked>
-                                    <div>
+                                    <div class="checkout-payment-text-wrapper">
                                         <span class="checkout-payment-name">Cash On Delivery (COD)</span>
                                         <span class="checkout-payment-desc">Pay in cash when your order is delivered to your door.</span>
                                     </div>
@@ -135,7 +135,7 @@
                                            name="payment_method" 
                                            value="online"
                                            class="checkout-payment-radio">
-                                    <div>
+                                    <div class="checkout-payment-text-wrapper">
                                         <span class="checkout-payment-name">Online Payment (Razorpay)</span>
                                         <span class="checkout-payment-desc">Pay securely via credit card, debit card, UPI, or Net Banking.</span>
                                     </div>
@@ -180,9 +180,9 @@
                             </div>
 
                             <div class="checkout-item-details">
-                                <h3 class="checkout-item-name">
+                                <h4 class="checkout-item-name">
                                     {{ $item->product->catalogName() }}
-                                </h3>
+                                </h4>
                                 <div class="checkout-item-price-row d-flex align-items-center gap-2 mt-1">
                                     <span class="checkout-item-price">₹{{ number_format($item->subtotal, 2) }}</span>
                                     @if($item->discount > 0)

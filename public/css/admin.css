@@ -220,14 +220,15 @@ body {
 }
 
 .product-table th, .order-table th, .users-table th, .table th {
-    background-color: var(--theme-primary);
-    color: #ffffff;
-    padding: 15px 15px;
-    text-align: left;
-    font-size: 17px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
+    background-color: #f9fafb !important;
+    color: #4b5563 !important;
+    padding: 12px 16px !important;
+    text-align: left !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 2px solid #e5e7eb !important;
 }
 
 .product-table th:first-child, .order-table th:first-child, .users-table th:first-child, .table th:first-child {
@@ -796,8 +797,8 @@ body {
 }
 
 .content .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
 .content .row.g-3 .card {
@@ -1038,19 +1039,34 @@ body {
     margin-top: 30px;
 }
 .admin-btn-primary {
-    background: var(--theme-primary);
-    color: var(--theme-white);
-    border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.3s;
+    background: var(--theme-primary, #C06B1F) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
 }
-.admin-btn-primary:hover {
-    background: var(--theme-primary-hover);
-    transform: translateY(-2px);
+
+.admin-btn-secondary {
+    background: #ffffff !important;
+    color: var(--theme-primary, #C06B1F) !important;
+    border: 2px solid var(--theme-primary, #C06B1F) !important;
+    padding: 8px 22px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.admin-btn-secondary:hover {
+    background: var(--theme-primary, #C06B1F) !important;
+    color: #ffffff !important;
 }
 .admin-alert-error {
     background: #fee2e2;
@@ -1311,4 +1327,118 @@ body {
 .admin-extracted-style-17 { flex-direction: column; align-items: flex-start; gap: 15px; }
 .admin-extracted-style-18 { font-size: 17px; }
 .admin-extracted-style-19 { flex-direction: column; align-items: flex-start; gap: 15px; }
+
+/* Disable Card Jump / Lift Hover Animation Across All Admin Pages */
+.card:hover,
+.card1:hover,
+.order-card:hover,
+.users-card:hover,
+.admin-card:hover,
+.admin-section-card:hover,
+.content .card:hover,
+.content .row .card:hover,
+.content .admin-card:hover,
+.stat-card:hover,
+.dashboard-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+}
+
+/* Sidebar Header & Brand Title Alignment */
+.sidebar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+}
+
+.sidebar h3,
+.sidebar-title,
+.sidebar h3.sidebar-title {
+    color: #ffffff !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0.8px !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    border-bottom: none !important;
+    text-align: left !important;
+}
+
+/* Stat Cards Modern Formatting */
+.dash-stat-card {
+    border-radius: 12px !important;
+    border: 1px solid #E5E7EB !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.dash-stat-card .card-body {
+    padding: 14px 12px !important;
+    overflow: hidden !important;
+}
+
+.dash-stat-label {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #6B7280 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    margin-bottom: 6px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.dash-stat-value {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.dash-stat-trend {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.dash-stat-trend-down {
+    color: #111827 !important;
+}
+
+.dash-card-header {
+    border-bottom: 1px solid #F3F4F6 !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    padding: 16px 20px !important;
+    color: #111827 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Create Product Page Hover Disable */
+.admin-section-card,
+.admin-section-card:hover,
+.admin-card-standard,
+.admin-card-standard:hover,
+.card,
+.card:hover {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+}
 

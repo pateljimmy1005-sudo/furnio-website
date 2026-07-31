@@ -53,8 +53,11 @@ class ProductController extends Controller
 
     public function index()
     {
-        $data = Product::with('images')->get();
-        return view('home', compact('data'));
+        $featuredProducts = Product::with('images')->latest()->take(8)->get();
+        $reviews = \App\Models\Review::with(['user', 'product'])->where('rating', '>=', 4)->latest()->take(6)->get();
+        $data = $featuredProducts;
+
+        return view('home', compact('data', 'featuredProducts', 'reviews'));
     }
 
 
@@ -161,10 +164,27 @@ class ProductController extends Controller
     }
     public function category($name)
     {
+        $categoryName = trim(str_replace('+', ' ', urldecode($name)));
+
         $products = $this->storefrontQuery()
-            ->where('category', $name)
+            ->where(function ($query) use ($categoryName) {
+                $query->where('category', 'LIKE', $categoryName)
+                      ->orWhere('category', 'LIKE', '%' . $categoryName . '%')
+                      ->orWhereRaw('LOWER(category) = ?', [strtolower($categoryName)]);
+            })
             ->latest()
             ->get();
+
+        if ($products->isEmpty()) {
+            $words = explode(' ', $categoryName);
+            $firstWord = $words[0] ?? $categoryName;
+            $products = $this->storefrontQuery()
+                ->where('category', 'LIKE', '%' . $firstWord . '%')
+                ->latest()
+                ->get();
+        }
+
+        $name = $categoryName;
 
         return view('category', compact('products', 'name'));
     }

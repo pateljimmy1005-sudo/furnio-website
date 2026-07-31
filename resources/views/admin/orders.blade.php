@@ -42,61 +42,46 @@
 
 
 
-            <div class="table-responsive"><table class="order-table"
-                   id="orderTable">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 order-table" id="orderTable" style="min-width: 600px;">
+                    <thead class="table-light border-bottom">
+                        <tr>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">ID</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Customer</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Phone</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Address</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Price</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Status</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Date</th>
+                            <th class="text-secondary text-uppercase fw-bold text-center py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Actions</th>
+                        </tr>
+                    </thead>
 
-                <thead>
+                    <tbody>
+                        @foreach($orders as $order)
+                        <tr>
+                            <td class="fw-semibold text-secondary py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">{{ $order->id }}</td>
+                            <td class="fw-bold text-dark py-2 py-md-3 px-2 px-md-3" style="font-size: 14px;">{{ $order->name }}</td>
+                            <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13.5px;">{{ $order->phone }}</td>
+                            <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13.5px;">{{ $order->address }}</td>
+                            <td class="fw-bold text-dark py-2 py-md-3 px-2 px-md-3" style="font-size: 14px;">₹{{ number_format($order->total_amount ?? $order->total_price, 2) }}</td>
+                            <td class="py-2 py-md-3 px-2 px-md-3">
+                                <form action="{{ route('admin.order.update-status', $order->id) }}" method="POST">
+                                    @csrf
+                                    <select name="status" class="form-select form-select-sm fw-bold shadow-sm" style="border: 1.5px solid #d1d5db; border-radius: 6px; font-size: 13px;" onchange="this.form.submit()">
+                                        <option value="Created" {{ $order->status === \App\Enums\OrderStatus::CREATED || $order->status === \App\Enums\OrderStatus::PENDING ? 'selected' : '' }}>Created</option>
+                                        <option value="Delivered" {{ $order->status === \App\Enums\OrderStatus::DELIVERED ? 'selected' : '' }}>Delivered</option>
+                                        <option value="Cancelled" {{ $order->status === \App\Enums\OrderStatus::CANCELLED ? 'selected' : '' }}>Cancelled</option>
+                                    </select>
+                                </form>
+                            </td>
 
-                    <tr>
-
-                        <th>ID</th>
-                        <th>Customer</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-
-                    </tr>
-
-                </thead>
-
-
-
-                <tbody>
-
-                    @foreach($orders as $order)
-
-                    <tr>
-
-                        <td>{{ $order->id }}</td>
-
-                        <td>{{ $order->name }}</td>
-
-                        <td>{{ $order->phone }}</td>
-
-                        <td>{{ $order->address }}</td>
-
-                        <td>₹{{ number_format($order->total_amount ?? $order->total_price, 2) }}</td>
-
-                        <td>
-                            <form action="{{ route('admin.order.update-status', $order->id) }}" method="POST">
-                                @csrf
-                                <select name="status" class="form-select form-select-sm status-dropdown" onchange="this.form.submit()">
-                                    <option value="Created" {{ $order->status === \App\Enums\OrderStatus::CREATED || $order->status === \App\Enums\OrderStatus::PENDING ? 'selected' : '' }}>Created</option>
-                                    <option value="Delivered" {{ $order->status === \App\Enums\OrderStatus::DELIVERED ? 'selected' : '' }}>Delivered</option>
-                                    <option value="Cancelled" {{ $order->status === \App\Enums\OrderStatus::CANCELLED ? 'selected' : '' }}>Cancelled</option>
-                                </select>
-                            </form>
-                        </td>
-
-                        <td>
+                        <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">
                             {{ $order->created_at->format('d M Y') }}
                         </td>
 
-                        <td>
-                            <div class="action-buttons">
+                        <td class="text-center py-2 py-md-3 px-2 px-md-3">
+                            <div class="action-buttons d-flex justify-content-center">
                                 <form action="{{ route('admin.order.delete', $order->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this order?')">
                                     @csrf
                                     @method('DELETE')

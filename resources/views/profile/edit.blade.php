@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="profile-page">
-    <div class="container">
+<div class="container my-5">
         <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-top: -30px; margin-bottom: 20px;">
             <i class="bi bi-arrow-left"></i> Back
         </a>
@@ -31,15 +31,19 @@
 
                     <div class="quick-links">
                         <a href="{{ route('orders') }}" class="quick-link">
-                            <i class="bi bi-bag-check"></i>
-                            <div>
+                            <div class="quick-link-icon">
+                                <i class="bi bi-bag-check"></i>
+                            </div>
+                            <div class="quick-link-text">
                                 <strong>{{ $totalOrders }}</strong>
                                 <span>Orders</span>
                             </div>
                         </a>
                         <a href="{{ route('wishlist') }}" class="quick-link">
-                            <i class="bi bi-heart"></i>
-                            <div>
+                            <div class="quick-link-icon">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                            <div class="quick-link-text">
                                 <strong>{{ \App\Models\Wishlist::where('user_id', $user->id)->count() }}</strong>
                                 <span>Wishlist</span>
                             </div>

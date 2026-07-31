@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="container my-5">
 <div class="orders-history-page orders-page-wrapper">
 
     <div class="container" style="max-width: 1000px;">
@@ -159,17 +160,18 @@
 
                     </div>
 
+                    <div class="order-card-footer">
+                        <i class="fa-solid fa-circle-question me-1"></i> Need help with your order? <a href="{{ route('contact') }}">Contact our support team.</a>
+                    </div>
+
                 </div>
                 @endforeach
-            </div>
-
-            <div class="orders-footer-help">
-                Need help with your order? <a href="{{ route('contact') }}">Contact our support team.</a>
             </div>
         @endif
 
     </div>
 
+</div>
 </div>
 
 @endsection

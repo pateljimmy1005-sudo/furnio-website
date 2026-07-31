@@ -26,7 +26,7 @@
 
     <div class="card shadow border-0 admin-card-standard">
         <div class="card-header bg-white d-flex justify-content-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
-            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-start text-break">Contact Form Submissions</h2>
+            <h2 class="page-title m-0 fw-bold text-uppercase text-start text-break">Contact Form Submissions</h2>
         </div>
         
             <!-- SEARCH -->

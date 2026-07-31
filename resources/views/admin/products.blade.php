@@ -8,13 +8,13 @@
     </div>
 
     <div class="card shadow-sm border-0 admin-card-standard rounded-3">
-        <div class="card-header bg-white d-flex flex-row justify-content-between align-items-center py-2.5 py-md-3 px-3 px-md-4 gap-2" style="border-bottom: 2px solid var(--theme-primary, #C06B1F);">
-            <h2 class="page-title m-0 fw-bold text-uppercase text-dark align-self-center" style="font-size: clamp(14px, 3.5vw, 22px); line-height: 1.2;">Products Management</h2>
-            <a href="{{ route('admin.product.create') }}" class="btn text-white px-2 px-sm-3 px-md-4 py-1.5 py-sm-2 fw-bold text-uppercase shadow-sm align-self-center flex-shrink-0" style="background-color: var(--theme-primary, #C06B1F); border-radius: 6px; font-size: clamp(11px, 2.8vw, 13px); white-space: nowrap;">
+        <div class="card-header bg-white d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center py-2 px-3 px-md-4 gap-2" style="border-bottom: 2px solid var(--theme-primary, #C06B1F);">
+            <h2 class="page-title m-0 fw-bold text-uppercase text-dark align-self-start align-self-sm-center text-nowrap">Products Management</h2>
+            <a href="{{ route('admin.product.create') }}" class="btn admin-btn-add shadow-sm align-self-start align-self-sm-center flex-shrink-0">
                 <i class="fas fa-plus me-1"></i> Add Product
             </a>
         </div>
-        <div class="card-body p-2 p-md-4">
+        <div class="card-body pt-0 p-2 p-md-4">
 
            @if(session('success'))
                 <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -71,20 +71,20 @@
                                 <span class="text-danger fw-semibold" style="font-size: 13px; white-space: nowrap;">OUT OF STOCK</span>
                             @endif
                         </td>
-                        <td class="text-center py-2 py-md-3 px-2 px-md-3">
-                            <div class="d-inline-flex align-items-center gap-2">
+                        <td class="text-center py-2 py-md-3 px-2 px-md-3 text-nowrap">
+                            <div class="d-inline-flex align-items-center gap-3">
                                 <a href="{{ route('admin.product.edit', $product->id) }}"
-                                   class="text-primary text-decoration-none" title="Edit Product" style="font-size: 15px;">
+                                   class="text-primary text-decoration-none me-2 fs-5" title="Edit Product">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
                                 <form action="{{ route('admin.product.delete', $product->id) }}"
                                       method="POST"
-                                      class="d-inline m-0"
+                                      class="d-inline m-0 p-0"
                                       onsubmit="return confirm('Are you sure you want to delete {{ addslashes($product->name) }}?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn p-0 border-0 bg-transparent text-danger" title="Delete Product" style="font-size: 15px;">
+                                    <button type="submit" class="btn p-0 border-0 bg-transparent text-danger fs-5" title="Delete Product">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>

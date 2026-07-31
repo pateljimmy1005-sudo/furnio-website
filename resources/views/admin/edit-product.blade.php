@@ -37,7 +37,7 @@
 
     <div class="card shadow border-0 admin-card-standard">
         <div class="card-header bg-white d-flex justify-content-between align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
-            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-center text-sm-start text-break">Edit Product</h2>
+            <h2 class="page-title m-0 fw-bold text-uppercase text-start text-break">Edit Product</h2>
         </div>
         <div class="card-body p-2 p-md-4 ">
 

@@ -27,6 +27,40 @@
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700 !important;
         }
+        h2.page-title, .page-title {
+            font-size: 18px !important;
+            line-height: 1.3 !important;
+        }
+        @media (max-width: 991.98px) {
+            h2.page-title, .page-title {
+                font-size: 15px !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            h2.page-title, .page-title {
+                font-size: 13px !important;
+            }
+        }
+        .admin-btn-add {
+            background-color: var(--theme-primary, #C06B1F) !important;
+            color: #ffffff !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            padding: 6px 14px !important;
+            border-radius: 6px !important;
+            white-space: nowrap !important;
+            text-transform: uppercase !important;
+            line-height: 1.2 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+        }
+        @media (max-width: 575.98px) {
+            .admin-btn-add {
+                font-size: 10.5px !important;
+                padding: 4px 8px !important;
+                border-radius: 4px !important;
+            }
+        }
     </style>
 
 </head>

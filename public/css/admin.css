@@ -946,10 +946,10 @@ body {
 }
 
 .badge {
-    padding: 6px 12px;
+    padding: 4px 10px;
     border-radius: 30px;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 12.5px !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -1440,5 +1440,15 @@ body {
     transform: none !important;
     transition: none !important;
     animation: none !important;
+}
+
+/* Status Dropdown Fixed Responsive Width */
+.status-select-fixed,
+.order-table select {
+    min-width: 115px !important;
+    width: 115px !important;
+    font-size: 13px !important;
+    padding-left: 8px !important;
+    padding-right: 22px !important;
 }
 

@@ -25,8 +25,8 @@
 @endif
 
     <div class="card shadow border-0 admin-card-standard">
-        <div class="card-header bg-white d-flex justify-content-center justify-content-sm-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
-            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-center text-sm-start text-break">Contact Form Submissions</h2>
+        <div class="card-header bg-white d-flex justify-content-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
+            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-start text-break">Contact Form Submissions</h2>
         </div>
         
             <!-- SEARCH -->
@@ -46,7 +46,7 @@
                     <p class="admin-empty-contacts-text">No contact form submissions found.</p>
                 </div>
             @else
-                <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                <div class="table-responsive"><table class="table table-hover align-middle mb-0" style="min-width: 800px;">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -55,8 +55,8 @@
                             <th>Phone</th>
                             <th>Subject</th>
                             <th>Message</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th class="text-nowrap">Date</th>
+                            <th class="text-nowrap">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,13 +65,13 @@
                             <td>{{ $contact->id }}</td>
                             <td class="admin-contact-name">{{ $contact->name }}</td>
                             <td><a href="mailto:{{ $contact->email }}" class="admin-contact-email">{{ $contact->email }}</a></td>
-                            <td>+91{{ $contact->phone ?? 'N/A' }}</td>
+                            <td class="text-nowrap">+91 {{ $contact->phone ?? 'N/A' }}</td>
                             <td class="admin-contact-subject">{{ $contact->subject ?? 'N/A' }}</td>
                             <td class="admin-contact-message">
                                 {{ $contact->message }}
                             </td>
-                            <td>{{ $contact->created_at->format('d M Y H:i') }}</td>
-                            <td>
+                            <td class="text-nowrap">{{ $contact->created_at ? $contact->created_at->format('d M Y, h:i A') : 'N/A' }}</td>
+                            <td class="text-nowrap">
                                 <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this submission?')" class="admin-form-inline">
                                     @csrf
                                     @method('DELETE')

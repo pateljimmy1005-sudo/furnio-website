@@ -25,8 +25,8 @@
 @endif
 
     <div class="card shadow border-0 admin-card-standard">
-        <div class="card-header bg-white d-flex justify-content-center justify-content-sm-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
-            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-center text-sm-start text-break">Reviews Management</h2>
+        <div class="card-header bg-white d-flex justify-content-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
+            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-start text-break">Reviews Management</h2>
         </div>
         <div class="card-body p-3 p-md-4">
             @if($reviews->isEmpty())
@@ -42,8 +42,8 @@
                             <th>Product Name</th>
                             <th>Rating</th>
                             <th>Review</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th class="text-nowrap">Date</th>
+                            <th class="text-nowrap">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,10 +52,10 @@
                             <td>{{ $review->id }}</td>
                             <td>{{ $review->user->name ?? 'N/A' }}</td>
                             <td>{{ $review->product->name ?? 'N/A' }}</td>
-                            <td>{{ $review->rating }} / 5</td>
+                            <td class="text-nowrap">{{ $review->rating }} / 5</td>
                             <td>{{ Str::limit($review->review, 50) }}</td>
-                            <td>{{ $review->created_at->format('d M Y H:i') }}</td>
-                            <td>
+                            <td class="text-nowrap">{{ $review->created_at ? $review->created_at->format('d M Y, h:i A') : 'N/A' }}</td>
+                            <td class="text-nowrap">
                                 <form action="{{ route('admin.review.delete', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?')" class="admin-form-inline">
                                     @csrf
                                     @method('DELETE')

@@ -25,8 +25,8 @@
 @endif
 
     <div class="card shadow border-0 admin-card-standard">
-        <div class="card-header bg-white d-flex justify-content-center justify-content-sm-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
-            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-center text-sm-start text-break">All Orders</h2>
+        <div class="card-header bg-white d-flex justify-content-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
+            <h2 class="page-title m-0 fw-bold text-uppercase fs-3 text-start text-break">All Orders</h2>
         </div>
 
         <div class="card-body p-3 p-md-4">
@@ -42,18 +42,18 @@
 
 
 
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0 order-table" id="orderTable" style="min-width: 600px;">
+            <div class="table-responsive" style="-webkit-overflow-scrolling: touch;">
+                <table class="table table-hover align-middle mb-0 order-table" id="orderTable" style="min-width: 820px;">
                     <thead class="table-light border-bottom">
                         <tr>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">ID</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Customer</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Phone</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Address</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Price</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Status</th>
-                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Date</th>
-                            <th class="text-secondary text-uppercase fw-bold text-center py-2 py-md-3 px-2 px-md-3" style="font-size: 12px;">Actions</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="width: 50px; font-size: 12px;">ID</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 120px; font-size: 12px;">Customer</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 110px; font-size: 12px;">Phone</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 130px; font-size: 12px;">Address</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 100px; font-size: 12px;">Price</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 130px; font-size: 12px;">Status</th>
+                            <th class="text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="min-width: 100px; font-size: 12px;">Date</th>
+                            <th class="text-secondary text-uppercase fw-bold text-center py-2 py-md-3 px-2 px-md-3" style="width: 80px; font-size: 12px;">Actions</th>
                         </tr>
                     </thead>
 
@@ -65,10 +65,10 @@
                             <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13.5px;">{{ $order->phone }}</td>
                             <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13.5px;">{{ $order->address }}</td>
                             <td class="fw-bold text-dark py-2 py-md-3 px-2 px-md-3" style="font-size: 14px;">₹{{ number_format($order->total_amount ?? $order->total_price, 2) }}</td>
-                            <td class="py-2 py-md-3 px-2 px-md-3">
+                            <td class="py-2 py-md-3 px-2 px-md-3" style="min-width: 130px;">
                                 <form action="{{ route('admin.order.update-status', $order->id) }}" method="POST">
                                     @csrf
-                                    <select name="status" class="form-select form-select-sm fw-bold shadow-sm" style="border: 1.5px solid #d1d5db; border-radius: 6px; font-size: 13px;" onchange="this.form.submit()">
+                                    <select name="status" class="form-select form-select-sm fw-bold shadow-sm status-select-fixed" style="border: 1.5px solid #d1d5db; border-radius: 6px; font-size: 13px; min-width: 115px; width: 115px;" onchange="this.form.submit()">
                                         <option value="Created" {{ $order->status === \App\Enums\OrderStatus::CREATED || $order->status === \App\Enums\OrderStatus::PENDING ? 'selected' : '' }}>Created</option>
                                         <option value="Delivered" {{ $order->status === \App\Enums\OrderStatus::DELIVERED ? 'selected' : '' }}>Delivered</option>
                                         <option value="Cancelled" {{ $order->status === \App\Enums\OrderStatus::CANCELLED ? 'selected' : '' }}>Cancelled</option>

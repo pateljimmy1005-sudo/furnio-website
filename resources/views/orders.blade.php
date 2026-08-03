@@ -30,11 +30,13 @@
     }, 3000); 
 </script>
 
-        <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-bottom: 25px;">
-            <i class="bi bi-arrow-left"></i> Back
-        </a>
+        <div class="mb-3">
+            <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-flex align-items-center">
+                <i class="bi bi-arrow-left me-1"></i> Back
+            </a>
+        </div>
 
-        <div class="text-center mb-5 mt-2">
+        <div class="text-center mb-4 mt-2">
             <h1 class="section-title all-products-header fw-bold" style="margin-bottom: 2px !important;">
                 My Orders
             </h1>
@@ -42,17 +44,52 @@
                 <div class="title-line" style="width: 80px; height: 3px; background-color: var(--theme-primary, #C06B1F); border-radius: 2px;"></div>
             </div>
             <p class="orders-page-subtitle text-center mt-2 mb-0" style="font-size: 15px; color: #6B7280;">
-                Track and manage your recent purchase history.
+                Track, search, and manage your recent purchase history.
             </p>
         </div>
 
+        <!-- Simple Search Bar -->
+        <div class="orders-search-box mb-4">
+            <form action="{{ route('orders') }}" method="GET">
+                <div class="input-group shadow-sm" style="border-radius: 10px;">
+                    <input type="text" name="search" value="{{ request('search') }}" class="form-control orders-search-input" placeholder="Search Order ID (#123), Product, Invoice, Name, Phone, Payment ID...">
+                    <button type="submit" class="btn orders-search-btn">
+                        <i class="fa-solid fa-magnifying-glass me-1"></i> Search
+                    </button>
+                    @if(request()->filled('search'))
+                        <a href="{{ route('orders') }}" class="btn btn-outline-secondary d-flex align-items-center justify-content-center px-3" style="border-radius: 0 10px 10px 0; border-left: none;" title="Clear Search">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    @endif
+                </div>
+
+                @if(request()->filled('search'))
+                    <div class="mt-2 text-center text-muted small">
+                        Showing <span class="fw-bold text-dark">{{ $totalMatching ?? $orders->total() }}</span> matching {{ Str::plural('order', $totalMatching ?? $orders->total()) }} for "<span class="fw-bold text-dark">{{ request('search') }}</span>"
+                        · <a href="{{ route('orders') }}" class="text-decoration-none fw-bold" style="color: #C06B1F;">Clear Search</a>
+                    </div>
+                @endif
+            </form>
+        </div>
+
         @if($orders->isEmpty())
-            <div class="orders-empty-card">
-                <div class="orders-empty-icon">📦</div>
-                <h2 class="orders-empty-title">No Orders Placed Yet</h2>
-                <p class="orders-empty-text">You have not made any purchases yet. Add some beautiful furniture to your home!</p>
-                <a href="/store" class="orders-btn-browse">Browse Shop</a>
-            </div>
+            @if(request()->filled('search'))
+                <div class="orders-empty-card text-center p-5 bg-white rounded-4 border shadow-sm">
+                    <div class="orders-empty-icon mb-3 fs-1 text-muted">🔍</div>
+                    <h3 class="fw-bold text-dark mb-2">No Matching Orders Found</h3>
+                    <p class="text-secondary mb-4">We couldn't find any orders matching "<span class="fw-bold">{{ request('search') }}</span>". Check for typos or try searching with a different term.</p>
+                    <a href="{{ route('orders') }}" class="btn btn-dark px-4 py-2 rounded-3 fw-bold">
+                        <i class="fa-solid fa-rotate-left me-1"></i> View All Orders
+                    </a>
+                </div>
+            @else
+                <div class="orders-empty-card">
+                    <div class="orders-empty-icon">📦</div>
+                    <h2 class="orders-empty-title">No Orders Placed Yet</h2>
+                    <p class="orders-empty-text">You have not made any purchases yet. Add some beautiful furniture to your home!</p>
+                    <a href="/store" class="orders-btn-browse">Browse Shop</a>
+                </div>
+            @endif
         @else
             <div class="orders-list-grid">
                 @foreach($orders as $order)
@@ -87,11 +124,15 @@
                                     @if($item->product)
                                     <div class="order-item-row">
                                         <div class="order-product-img-wrapper">
-                                            <img src="{{ $item->product->imageUrl() }}" alt="{{ $item->product->catalogName() }}" class="order-product-img">
+                                            <a href="{{ route('image.detail', $item->product->id) }}" class="order-product-img-link" title="Click to view product details">
+                                                <img src="{{ $item->product->imageUrl() }}" alt="{{ $item->product->catalogName() }}" class="order-product-img">
+                                            </a>
                                         </div>
                                         <div class="order-item-info">
                                             <h3 class="order-product-name">
-                                                {{ $item->product->catalogName() }}
+                                                <a href="{{ route('image.detail', $item->product->id) }}" class="order-product-link" title="Click to view product details">
+                                                    {{ $item->product->catalogName() }}
+                                                </a>
                                             </h3>
                                             <p class="order-product-qty">Qty: {{ $item->quantity }}</p>
                                             <p class="order-product-price">Price: ₹{{ number_format($item->price, 2) }}</p>
@@ -102,11 +143,15 @@
                                 @elseif($order->legacyProduct)
                                     <div class="order-item-row">
                                         <div class="order-product-img-wrapper">
-                                            <img src="{{ $order->legacyProduct->imageUrl() }}" alt="{{ $order->legacyProduct->catalogName() }}" class="order-product-img">
+                                            <a href="{{ route('image.detail', $order->legacyProduct->id) }}" class="order-product-img-link" title="Click to view product details">
+                                                <img src="{{ $order->legacyProduct->imageUrl() }}" alt="{{ $order->legacyProduct->catalogName() }}" class="order-product-img">
+                                            </a>
                                         </div>
                                         <div class="order-item-info">
                                             <h3 class="order-product-name">
-                                                {{ $order->legacyProduct->catalogName() }}
+                                                <a href="{{ route('image.detail', $order->legacyProduct->id) }}" class="order-product-link" title="Click to view product details">
+                                                    {{ $order->legacyProduct->catalogName() }}
+                                                </a>
                                             </h3>
                                             <p class="order-product-qty">Qty: {{ $order->quantity }}</p>
                                             <p class="order-product-price">Price: ₹{{ number_format($order->total_price, 2) }}</p>
@@ -166,6 +211,11 @@
 
                 </div>
                 @endforeach
+            </div>
+
+            <!-- Pagination Links -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $orders->links() }}
             </div>
         @endif
 

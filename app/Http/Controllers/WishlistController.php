@@ -8,30 +8,39 @@ use App\Models\ProductImage;
 
 class WishlistController extends Controller
 {
-    public function add(Request $request)
+    public function add(Request $request, $id = null)
     {
+        $productId = $request->product_id ?? $id;
+
+        if (!$productId) {
+            return back()->with('error', 'Invalid product!');
+        }
+
         $exists = Wishlist::where('user_id', auth()->id())
-            ->where('product_id', $request->product_id)
+            ->where('product_id', $productId)
             ->first();
 
         if(!$exists)
         {
             Wishlist::create([
                 'user_id' => auth()->id(),
-                'product_id' => $request->product_id,
+                'product_id' => $productId,
             ]);
+            return back()->with('success', 'Product added to Wishlist successfully!');
         }
 
-        return back()->with('success', 'Added To Wishlist');
+        return back()->with('info', 'Product is already in your Wishlist!');
     }
 
-    public function remove(Request $request)
+    public function remove(Request $request, $id = null)
     {
+        $productId = $request->product_id ?? $id;
+
         Wishlist::where('user_id', auth()->id())
-            ->where('product_id', $request->product_id)
+            ->where('product_id', $productId)
             ->delete();
 
-        return back()->with('success', 'Removed From Wishlist');
+        return back()->with('success', 'Product removed from Wishlist successfully!');
     }
 
     public function index()

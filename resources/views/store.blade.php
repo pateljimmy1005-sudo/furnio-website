@@ -50,7 +50,7 @@
                         : null;
                 @endphp
 
-                <div class="product-card">
+                <div class="product-card {{ $img->catalogStock() <= 0 ? 'product-card-out-of-stock' : '' }}">
 
                     <div class="wishlist-heart">
 
@@ -91,25 +91,36 @@
                     </div>
 
                     <!-- Product Image -->
-                    <a href="{{ route('image.detail', $img->id) }}">
-
-                        <img src="{{ $img->imageUrl() }}" class="card-img">
-
+                    <a href="{{ route('image.detail', $img->id) }}" class="position-relative d-block overflow-hidden rounded-3">
+                        @if($img->catalogStock() <= 0)
+                            <div class="out-of-stock-badge-tag">
+                                <i class="fa-solid fa-ban"></i> Out of Stock
+                            </div>
+                        @endif
+                        <img src="{{ $img->imageUrl() }}" class="card-img {{ $img->catalogStock() <= 0 ? 'out-of-stock-img-dim' : '' }}">
                     </a>
 
                     <h3>{{ $img->name }}</h3>
+
+                    <div class="store-card-rating-badge">
+                        <i class="fa-solid fa-star text-warning"></i> {{ number_format($img->averageRating(), 1) }}
+                        <span class="text-muted fw-normal">({{ $img->reviewCount() }})</span>
+                    </div>
 
                     <p class="price-tag">
                         ₹{{ number_format($img->finalPrice()) }}
                     </p>
 
                     <!-- Button -->
-                    <a href="{{ route('image.detail', $img->id) }}"
-                       class="btn-primary btn-view-details">
-
-                        View Details
-
-                    </a>
+                    @if($img->catalogStock() > 0)
+                        <a href="{{ route('image.detail', $img->id) }}" class="btn-primary btn-view-details">
+                            View Details
+                        </a>
+                    @else
+                        <a href="{{ route('image.detail', $img->id) }}" class="btn-out-of-stock-disabled text-decoration-none">
+                            <i class="fa-solid fa-ban"></i> Out of Stock
+                        </a>
+                    @endif
 
                 </div>
 

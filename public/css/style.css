@@ -7244,7 +7244,7 @@ body, p, ul, ol, li, a, label, input, textarea, select, table, th, td, blockquot
 ========================================================= */
 .checkout-page {
     background-color: #f9fafb;
-    padding: 60px 0;
+    padding: 20px 0 60px 0;
     min-height: calc(100vh - 300px);
 }
 .checkout-page-container {
@@ -7253,7 +7253,10 @@ body, p, ul, ol, li, a, label, input, textarea, select, table, th, td, blockquot
     padding: 0 20px;
 }
 .checkout-back-link-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+}
+.checkout-back-link-wrapper .back-btn {
+    margin-bottom: 0 !important;
 }
 .checkout-breadcrumb {
     font-size: 17px;
@@ -8612,6 +8615,392 @@ html {
 .order-card-footer a:hover {
     color: #A05414 !important;
 }
+
+/* Global Toast Alert Notification */
+.global-toast-alert {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 999999;
+    min-width: 280px;
+    max-width: 440px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: toastSlideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 15px;
+}
+
+.global-toast-alert.alert-success {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: #ffffff;
+}
+
+.global-toast-alert.alert-info {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    color: #ffffff;
+}
+
+.global-toast-alert.alert-danger {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: #ffffff;
+}
+
+.global-toast-alert.toast-fade-out {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==========================================================================
+   MEESHO & FLIPKART INSPIRED OUT-OF-STOCK UI STYLES
+   ========================================================================== */
+.out-of-stock-img-dim {
+    filter: grayscale(65%) opacity(0.78) !important;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.product-card-out-of-stock {
+    position: relative;
+    opacity: 0.95;
+}
+.product-card-out-of-stock:hover .out-of-stock-img-dim {
+    filter: grayscale(50%) opacity(0.88) !important;
+}
+
+/* Red Overlay Badge Ribbon for Product Cards */
+.out-of-stock-badge-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Full Width Out of Stock Disabled Button */
+.btn-out-of-stock-disabled {
+    width: 100%;
+    background-color: #94A3B8 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    cursor: not-allowed !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: none !important;
+    opacity: 0.9 !important;
+}
+
+/* Product Detail Page Alert Banner (Flipkart/Meesho style) */
+.out-of-stock-alert-banner {
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    border-left: 5px solid #DC2626;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.08);
+}
+.out-of-stock-alert-banner .alert-icon {
+    font-size: 24px;
+    color: #DC2626;
+    flex-shrink: 0;
+}
+.out-of-stock-alert-banner .alert-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #991B1B;
+    margin: 0 0 2px 0;
+}
+.out-of-stock-alert-banner .alert-desc {
+    font-size: 13px;
+    color: #7F1D1D;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Overlay Badge on Main Image of Detail Page */
+.detail-main-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.detail-out-of-stock-overlay-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+    background: rgba(185, 28, 28, 0.92);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ==========================================================================
+   PROFESSIONAL RATING & REVIEW DASHBOARD (AMAZON/FLIPKART/MEESHO STYLE)
+   ========================================================================== */
+
+/* Overall Rating Dashboard Wrapper */
+.rating-dashboard-card {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.rating-overview-box {
+    text-align: center;
+    padding: 20px;
+    background: #FAF7F2;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-score-large {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1A1A1A;
+    line-height: 1;
+}
+
+.rating-stars-gold {
+    color: #F59E0B;
+    font-size: 18px;
+}
+
+.rating-count-text {
+    font-size: 13px;
+    color: #6B7280;
+    margin-top: 4px;
+}
+
+/* Progress Bars Breakdown */
+.rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.rating-bar-label {
+    width: 40px;
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rating-progress-track {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #E5E7EB;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.rating-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #F59E0B, #D97706);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.rating-bar-count {
+    width: 65px;
+    text-align: right;
+    color: #6B7280;
+    font-size: 12px;
+}
+
+/* Verified Purchase Badge */
+.verified-buyer-badge {
+    background-color: #DCFCE7;
+    color: #15803D;
+    border: 1px solid #86EFAC;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Customer Review Cards */
+.review-card-item {
+    background: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s ease;
+}
+
+.review-card-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C06B1F, #8B4513);
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.review-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.review-card-body {
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Storefront Card Rating Summary */
+.store-card-rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #D97706;
+    margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   SIMPLE MY ORDERS SEARCH BAR
+   ========================================================================== */
+.orders-search-box {
+    max-width: 650px;
+    margin: 0 auto 32px auto;
+}
+
+.orders-search-input {
+    border: 1px solid #D1D5DB;
+    border-right: none;
+    border-radius: 10px 0 0 10px !important;
+    padding: 12px 18px;
+    font-size: 14px;
+    background-color: #FAFAFA;
+    transition: all 0.2s ease;
+}
+
+.orders-search-input:focus {
+    background-color: #ffffff;
+    border-color: #C06B1F;
+    box-shadow: 0 0 0 3px rgba(192, 107, 31, 0.12);
+    outline: none;
+}
+
+.orders-search-btn {
+    background-color: #C06B1F !important;
+    color: #ffffff !important;
+    border: 1px solid #C06B1F !important;
+    border-radius: 0 10px 10px 0 !important;
+    padding: 12px 24px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.orders-search-btn:hover {
+    background-color: #A35717 !important;
+    border-color: #A35717 !important;
+    color: #ffffff !important;
+}
+
+.btn-orders-apply:hover {
+    background-color: #A35717 !important;
+    border-color: #A35717 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+.order-product-link {
+    color: #1F2937;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.order-product-link:hover {
+    color: #C06B1F;
+    text-decoration: underline;
+}
+
+.order-product-img-link {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.order-product-img-link:hover {
+    transform: scale(1.04);
+    opacity: 0.9;
+}
+
+
+
 
 
 

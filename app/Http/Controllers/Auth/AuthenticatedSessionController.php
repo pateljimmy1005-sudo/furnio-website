@@ -16,6 +16,24 @@ class AuthenticatedSessionController extends Controller
     // Login Page
     public function create(): View
     {
+        if (!session()->has('url.intended')) {
+            $previous = url()->previous();
+            $current = url()->current();
+
+            if ($previous && $previous !== $current &&
+                !str_contains($previous, '/login') &&
+                !str_contains($previous, '/register') &&
+                !str_contains($previous, '/logout')) {
+
+                $previousHost = parse_url($previous, PHP_URL_HOST);
+                $currentHost = parse_url($current, PHP_URL_HOST);
+
+                if (!$previousHost || $previousHost === $currentHost) {
+                    session()->put('url.intended', $previous);
+                }
+            }
+        }
+
         return view('auth.login');
     }
 
@@ -87,7 +105,7 @@ if (RateLimiter::tooManyAttempts($key, 5)) {
 }
 
           // User Login 
-          return redirect()->route('home')
+          return redirect()->intended(route('home'))
             ->with('success', 'Login Successful');
         }
 

@@ -85,27 +85,69 @@
                 <p><strong>Shipping Address:</strong> {{ $order->address }}</p>
             </div>
 
+            <p style="background-color: #e0f2fe; border-left: 4px solid #0284c7; padding: 12px 15px; border-radius: 4px; color: #0369a1; font-size: 15px; margin: 20px 0;">
+                📎 <strong>Invoice Attached:</strong> Your official invoice PDF has been attached to this email for your reference and records.
+            </p>
+
             <table class="product-list">
                 <thead>
                     <tr>
                         <th>Item</th>
                         <th>Qty</th>
-                        <th>Total</th>
+                        <th>Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $subtotal = 0;
+                    @endphp
+                    @if($order->relationLoaded('items') && $order->items->count() > 0)
+                        @foreach($order->items as $item)
+                            @php
+                                $itemSubtotal = $item->subtotal ?? ($item->price * $item->quantity);
+                                $subtotal += $itemSubtotal;
+                            @endphp
+                            <tr>
+                                <td>{{ $item->product ? ($item->product->catalogName() ?? $item->product->name) : 'Product Item' }}</td>
+                                <td>{{ $item->quantity }}</td>
+                                <td>₹{{ number_format($itemSubtotal, 2) }}</td>
+                            </tr>
+                        @endforeach
+                    @elseif($order->legacyProduct)
+                        @php
+                            $subtotal = $order->total_price ?? ($order->total_amount ?? 0);
+                        @endphp
+                        <tr>
+                            <td>{{ $order->legacyProduct->catalogName() ?? $order->legacyProduct->name }}</td>
+                            <td>{{ $order->quantity ?? 1 }}</td>
+                            <td>₹{{ number_format($subtotal, 2) }}</td>
+                        </tr>
+                    @else
+                        @php
+                            $subtotal = $order->total_amount ?? $order->total_price ?? 0;
+                        @endphp
+                        <tr>
+                            <td>Furniture Purchase</td>
+                            <td>1</td>
+                            <td>₹{{ number_format($subtotal, 2) }}</td>
+                        </tr>
+                    @endif
+                    
+                    @php
+                        $shipping = $order->shipping_fee ?? 99.00;
+                        $grandTotal = $subtotal + $shipping;
+                    @endphp
                     <tr>
-                        <td>{{ $order->product ? $order->product->name : 'Product Unavailable' }}</td>
-                        <td>{{ $order->quantity }}</td>
-                        <td>₹{{ number_format($order->total_price, 2) }}</td>
+                        <td colspan="2" style="text-align: right;"><strong>Subtotal:</strong></td>
+                        <td>₹{{ number_format($subtotal, 2) }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: right;"><strong>Shipping:</strong></td>
-                        <td>₹99.00</td>
+                        <td colspan="2" style="text-align: right;"><strong>Shipping Fee:</strong></td>
+                        <td>₹{{ number_format($shipping, 2) }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: right;"><strong>Grand Total:</strong></td>
-                        <td><strong>₹{{ number_format($order->total_price + 99, 2) }}</strong></td>
+                        <td><strong>₹{{ number_format($grandTotal, 2) }}</strong></td>
                     </tr>
                 </tbody>
             </table>

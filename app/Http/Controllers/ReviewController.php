@@ -11,34 +11,36 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_id'=>'required|exists:products,id',
-            'rating'=>'required|integer|min:1|max:5',
-            'review'=>'nullable|string|max:500'
+            'product_id' => 'required|exists:products,id',
+            'rating'     => 'required|integer|min:1|max:5',
+            'title'      => 'nullable|string|max:150',
+            'review'     => 'nullable|string|max:1000',
         ]);
 
         $hasPurchased = Order::where('user_id', auth()->id())
+            ->whereIn('status', ['Delivered', 'Completed'])
             ->whereHas('items', function($q) use ($request) {
                 $q->where('product_id', $request->product_id);
             })
-            ->where('status', 'Delivered')
             ->exists();
 
         if (!$hasPurchased) {
-            return back()->with('error', 'You can only review products that have been delivered to you.');
+            return back()->with('error', 'Only verified customers who have purchased and received this product can write a review.');
         }
 
         Review::updateOrCreate(
             [
-                'user_id'=>auth()->id(),
-                'product_id'=>$request->product_id
+                'user_id'    => auth()->id(),
+                'product_id' => $request->product_id,
             ],
             [
-                'rating'=>$request->rating,
-                'review'=>$request->review
+                'rating' => $request->rating,
+                'title'  => $request->title,
+                'review' => $request->review,
             ]
         );
 
-        return back()->with('success','Review submitted successfully.');
+        return back()->with('success', 'Your review has been submitted successfully.');
     }
 
     public function adminIndex()

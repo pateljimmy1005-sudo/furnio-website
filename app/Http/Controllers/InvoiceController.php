@@ -31,7 +31,7 @@ class InvoiceController extends Controller
         
         $invoiceNumber = 'INV-' . str_pad($order->id, 4, '0', STR_PAD_LEFT);
         
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('invoice', compact('order', 'invoiceNumber'));
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.invoice', compact('order', 'invoiceNumber'));
         return $pdf->download($invoiceNumber . '.pdf');
     }
 }

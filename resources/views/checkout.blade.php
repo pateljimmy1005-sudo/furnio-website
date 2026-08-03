@@ -4,7 +4,7 @@
 
 <div class="checkout-page">
 
-    <div class="container my-5">
+    <div class="container mt-1 mb-5">
         
         <div class="checkout-back-link-wrapper">
             <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('cart') }}" class="back-btn">

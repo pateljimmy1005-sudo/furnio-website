@@ -43,12 +43,13 @@
                             <th class="dash-table-th text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="width: 95px; font-size: 12px;">Price</th>
                             <th class="dash-table-th text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="width: 110px; font-size: 12px;">Category</th>
                             <th class="dash-table-th text-secondary text-uppercase fw-bold py-2 py-md-3 px-2 px-md-3" style="width: 110px; font-size: 12px;">Stock</th>
+                            <th class="dash-table-th text-secondary text-uppercase fw-bold text-center py-2 py-md-3 px-2 px-md-3" style="width: 100px; font-size: 12px;">Status</th>
                             <th class="dash-table-th text-secondary text-uppercase fw-bold text-center py-2 py-md-3 px-2 px-md-3" style="width: 90px; font-size: 12px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($products as $product)
-                    <tr class="{{ $product->hasInvalidPrice() ? 'table-warning' : '' }}">
+                    <tr class="{{ $product->hasInvalidPrice() ? 'table-warning' : (!$product->is_active ? 'table-secondary opacity-75' : '') }}">
                         <td class="fw-semibold text-secondary py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">{{ $product->id }}</td>
                         <td class="py-2 py-md-3 px-2 px-md-3">
                             <img src="{{ $product->imageUrl() }}"
@@ -68,8 +69,23 @@
                             @if($product->stock > 0)
                                 <span class="text-dark fw-semibold" style="font-size: 13px; white-space: nowrap;">{{ $product->stock }} IN STOCK</span>
                             @else
-                                <span class="text-danger fw-semibold" style="font-size: 13px; white-space: nowrap;">OUT OF STOCK</span>
+                                <span class="badge bg-danger fw-semibold" style="font-size: 11px; white-space: nowrap;">OUT OF STOCK</span>
                             @endif
+                        </td>
+                        <td class="text-center py-2 py-md-3 px-2 px-md-3 text-nowrap">
+                            <form action="{{ route('admin.product.toggle-status', $product->id) }}" method="POST" class="d-inline m-0">
+                                @csrf
+                                @method('PATCH')
+                                @if($product->is_active)
+                                    <button type="submit" class="btn btn-sm btn-success rounded-pill px-3 py-1 fw-bold shadow-sm" style="font-size: 11px;" title="Click to Deactivate">
+                                        <i class="fas fa-check-circle me-1"></i> Active
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-sm btn-secondary rounded-pill px-3 py-1 fw-bold shadow-sm" style="font-size: 11px;" title="Click to Activate">
+                                        <i class="fas fa-times-circle me-1"></i> Inactive
+                                    </button>
+                                @endif
+                            </form>
                         </td>
                         <td class="text-center py-2 py-md-3 px-2 px-md-3 text-nowrap">
                             <div class="d-inline-flex align-items-center gap-3">

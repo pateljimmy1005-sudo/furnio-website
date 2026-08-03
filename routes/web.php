@@ -89,8 +89,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(WishlistController::class)->group(function () {
         Route::get('/wishlist', 'index')->name('wishlist');
-        Route::post('/wishlist/add', 'add')->name('wishlist.add');
-        Route::post('/wishlist/remove', 'remove')->name('wishlist.remove');
+        Route::match(['get', 'post'], '/wishlist/add/{id?}', 'add')->name('wishlist.add');
+        Route::match(['get', 'post'], '/wishlist/remove/{id?}', 'remove')->name('wishlist.remove');
     });
 
     Route::controller(ReviewController::class)->group(function () {
@@ -116,6 +116,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         Route::post('/product/store', 'storeProduct')->name('product.store');
         Route::get('/product/edit/{id}', 'editProduct')->name('product.edit');
         Route::put('/product/update/{id}', 'updateProduct')->name('product.update');
+        Route::patch('/product/toggle-status/{id}', 'toggleProductStatus')->name('product.toggle-status');
         Route::delete('/product/delete/{id}', 'deleteProduct')->name('product.delete');
         
         Route::get('/orders', 'adminOrders')->name('orders');

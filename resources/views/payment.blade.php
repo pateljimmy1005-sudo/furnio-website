@@ -12,16 +12,16 @@
         <div class="card-body p-5 text-center">
             
             <!-- Sandbox Badge -->
-            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mb-4" style="background: rgba(192,107,31,0.1); color: #C06B1F; font-weight: 600;">
-                <span>🛠️</span> Razorpay Sandbox Simulator
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mb-4" style="background: rgba(40,167,69,0.1); color: #28a745; font-weight: 600;">
+                <span>🧪</span> Test Payment Mode (Simulator)
             </div>
 
-            <h2 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: #1A1A1A;">
-                Simulate Your Payment
+            <h2 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif; color: #1A1A1A;">
+                Complete Test Payment
             </h2>
             
-            <p class="text-secondary mb-4">
-                You are using placeholder Razorpay credentials. Use this simulation interface to test success or failure states.
+            <p class="text-secondary mb-4" style="font-size: 14px;">
+                Click the green button below to complete a test payment. Your order will be marked as paid and an order confirmation email with the Invoice PDF will be sent automatically.
             </p>
 
             <!-- Order Summary Box -->
@@ -31,28 +31,28 @@
                     <span class="font-monospace fw-bold">{{ $razorpayOrderId }}</span>
                 </div>
                 <div class="d-flex justify-content-between mb-3 pb-2 border-bottom">
-                    <span class="text-secondary">Prefill Contact:</span>
+                    <span class="text-secondary">Customer:</span>
                     <span class="fw-bold">{{ $phone }} ({{ $name }})</span>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="fw-bold fs-5">Amount to Pay:</span>
-                    <strong class="fs-4" style="color: #1A1A1A;">₹{{ number_format($amount, 2) }}</strong>
+                    <span class="fw-bold fs-5">Total Amount:</span>
+                    <strong class="fs-4" style="color: #28a745;">₹{{ number_format($amount, 2) }}</strong>
                 </div>
             </div>
 
             <!-- Simulation Actions -->
             <div class="d-flex flex-column gap-3 mb-4">
-                <button id="btn-mock-success" class="btn text-white py-3 fw-bold rounded-3" style="background: #28a745; transition: 0.3s;" onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
-                     Simulate Successful Payment
+                <button id="btn-mock-success" class="btn text-white py-3 fw-bold rounded-3 fs-5 shadow-sm" style="background: #28a745; transition: 0.3s;" onmouseover="this.style.background='#218838'" onmouseout="this.style.background='#28a745'">
+                    ✅ Pay ₹{{ number_format($amount, 2) }} (Test Successful Payment)
                 </button>
                 
-                <button id="btn-mock-fail" class="btn text-white py-3 fw-bold rounded-3" style="background: #dc3545; transition: 0.3s;" onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
-                     Simulate Cancelled/Failed Payment
+                <button id="btn-mock-fail" class="btn btn-outline-danger py-2 fw-semibold rounded-3" style="transition: 0.3s;">
+                    ❌ Simulate Payment Failure / Cancel
                 </button>
             </div>
 
-            <a href="{{ route('checkout') }}" class="text-decoration-none fw-bold" style="color: #1A1A1A;">
-                ← Go Back to Checkout
+            <a href="{{ route('checkout') }}" class="text-decoration-none fw-bold text-muted">
+                ← Return to Checkout
             </a>
         </div>
     </div>

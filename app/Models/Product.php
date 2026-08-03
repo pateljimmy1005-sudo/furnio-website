@@ -19,12 +19,14 @@ class Product extends Model
         'color',
         'stock',
         'discount',
+        'is_active',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
         'discount' => 'integer',
         'stock' => 'integer',
+        'is_active' => 'boolean',
     ];
 
     public function images()
@@ -109,8 +111,43 @@ class Product extends Model
     }
 
     public function reviews()
-  {
-    return $this->hasMany(Review::class);
-  }
+    {
+        return $this->hasMany(Review::class);
+    }
 
+    public function averageRating(): float
+    {
+        if ($this->relationLoaded('reviews')) {
+            $avg = $this->reviews->avg('rating');
+        } else {
+            $avg = $this->reviews()->avg('rating');
+        }
+        return round((float) ($avg ?? 0), 1);
+    }
+
+    public function reviewCount(): int
+    {
+        if ($this->relationLoaded('reviews')) {
+            return $this->reviews->count();
+        }
+        return $this->reviews()->count();
+    }
+
+    public function ratingBreakdown(): array
+    {
+        $reviews = $this->relationLoaded('reviews') ? $this->reviews : $this->reviews()->get();
+        $total = $reviews->count();
+
+        $breakdown = [];
+        for ($star = 5; $star >= 1; $star--) {
+            $count = $reviews->where('rating', $star)->count();
+            $percentage = $total > 0 ? round(($count / $total) * 100) : 0;
+            $breakdown[$star] = [
+                'count' => $count,
+                'percentage' => $percentage,
+            ];
+        }
+
+        return $breakdown;
+    }
 }

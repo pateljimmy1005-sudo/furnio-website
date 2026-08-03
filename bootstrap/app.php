@@ -18,6 +18,15 @@ return Application::configure(basePath: dirname(__DIR__))
             'payment/webhook',
             'logout',
         ]);
+        $middleware->redirectGuestsTo(function (\Illuminate\Http\Request $request) {
+            if ($request->isMethod('post')) {
+                $previous = url()->previous();
+                if ($previous && !str_contains($previous, '/login') && !str_contains($previous, '/register')) {
+                    session()->put('url.intended', $previous);
+                }
+            }
+            return route('login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (\Illuminate\Session\TokenMismatchException $e, \Illuminate\Http\Request $request) {

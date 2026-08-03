@@ -48,12 +48,12 @@ class ProductController extends Controller
 
     private function storefrontQuery()
     {
-        return Product::with('featuredImage');
+        return Product::with('featuredImage')->where('is_active', true);
     }
 
     public function index()
     {
-        $featuredProducts = Product::with('images')->latest()->take(8)->get();
+        $featuredProducts = Product::with('images')->where('is_active', true)->latest()->take(8)->get();
         $reviews = \App\Models\Review::with(['user', 'product'])->where('rating', '>=', 4)->latest()->take(6)->get();
         $data = $featuredProducts;
 
@@ -189,24 +189,60 @@ class ProductController extends Controller
         return view('category', compact('products', 'name'));
     }
 
-public function imageDetail($id)
+public function imageDetail($id, \Illuminate\Http\Request $request)
 {
+    $sort = $request->query('sort', 'recent');
+
+    $reviewQuery = function ($q) use ($sort) {
+        $q->with('user');
+        if ($sort === 'highest') {
+            $q->orderBy('rating', 'desc')->orderBy('created_at', 'desc');
+        } elseif ($sort === 'lowest') {
+            $q->orderBy('rating', 'asc')->orderBy('created_at', 'desc');
+        } else {
+            $q->orderBy('created_at', 'desc');
+        }
+    };
+
     $product = Product::with([
         'images',
-        'reviews.user'
+        'reviews' => $reviewQuery,
     ])->findOrFail($id);
+
+    if (!$product->is_active && (!auth()->check() || auth()->user()->role !== 'admin')) {
+        return redirect()->route('store')->with('info', 'This product is currently unavailable.');
+    }
 
     $hasPurchased = false;
     if (auth()->check()) {
         $hasPurchased = Order::where('user_id', auth()->id())
-                             ->where('status', 'Delivered')
-                             ->whereHas('items', function($q) use ($id) {
-                                 $q->where('product_id', $id);
-                             })
-                             ->exists();
+            ->whereIn('status', ['Delivered', 'Completed'])
+            ->whereHas('items', function($q) use ($id) {
+                $q->where('product_id', $id);
+            })
+            ->exists();
     }
 
-    return view('image-detail', compact('product', 'hasPurchased'));
+    // Get list of user_ids who have a verified completed/delivered purchase for this product
+    $verifiedUserIds = Order::whereIn('status', ['Delivered', 'Completed'])
+        ->whereHas('items', function($q) use ($id) {
+            $q->where('product_id', $id);
+        })
+        ->pluck('user_id')
+        ->unique()
+        ->toArray();
+
+    return view('image-detail', compact('product', 'hasPurchased', 'verifiedUserIds', 'sort'));
+}
+
+public function toggleProductStatus($id)
+{
+    $product = Product::findOrFail($id);
+    $product->is_active = !$product->is_active;
+    $product->save();
+
+    $statusText = $product->is_active ? 'Active' : 'Inactive';
+    return redirect()->back()->with('success', "Product status updated to {$statusText}.");
 }
 
     public function cancelOrder($id)
@@ -270,6 +306,7 @@ public function storeProduct(\App\Http\Requests\StoreProductRequest $request)
         'color'       => $request->color,
         'stock'       => $request->stock,
         'discount'    => $request->discount ?? 0,
+        'is_active'   => $request->has('is_active') ? $request->boolean('is_active') : true,
     ]);
 
     ProductImage::create([
@@ -308,6 +345,7 @@ public function updateProduct(\App\Http\Requests\UpdateProductRequest $request, 
         'color'       => $request->color,
         'stock'       => $request->stock,
         'discount'    => $request->discount ?? 0,
+        'is_active'   => $request->has('is_active') ? $request->boolean('is_active') : $product->is_active,
     ]);
 
     $product->save();

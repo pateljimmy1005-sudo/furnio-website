@@ -60,6 +60,33 @@
 </head>
 <body>
 
+    <!-- Global Session Toast Alert -->
+    @if(session('success') || session('error') || session('info') || session('status'))
+        <div id="global-toast-alert" class="global-toast-alert alert-{{ session('error') ? 'danger' : (session('info') ? 'info' : 'success') }}">
+            <div class="toast-content d-flex align-items-center gap-2">
+                <i class="fa-solid {{ session('error') ? 'fa-circle-xmark' : (session('info') ? 'fa-circle-info' : 'fa-circle-check') }} fs-5"></i>
+                <span class="fw-semibold">{{ session('success') ?? session('error') ?? session('info') ?? session('status') }}</span>
+            </div>
+            <button type="button" class="btn-close btn-close-white ms-3" onclick="document.getElementById('global-toast-alert').remove()" aria-label="Close"></button>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(function () {
+                    let toast = document.getElementById('global-toast-alert');
+                    if (toast) {
+                        toast.classList.add('toast-fade-out');
+                        setTimeout(function () {
+                            if (toast && toast.parentNode) {
+                                toast.remove();
+                            }
+                        }, 500);
+                    }
+                }, 3000);
+            });
+        </script>
+    @endif
+
     @include('partials.header')
 
     @yield('content')

@@ -122,16 +122,16 @@
                             </div>
                         </div>
 
-                        <!-- Inventory -->
+                        <!-- Inventory & Status -->
                         <div class="admin-section-card p-3 p-md-4 mb-0">
-                            <h5 class="admin-section-title fs-5 fs-md-4"><i class="fas fa-boxes me-2"></i> Inventory</h5>
+                            <h5 class="admin-section-title fs-5 fs-md-4"><i class="fas fa-boxes me-2"></i> Inventory & Status</h5>
 
                             <div class="admin-form-group mb-3">
                                 <label class="admin-form-label">Stock Quantity</label>
                                 <input type="number" name="stock" value="{{ old('stock', $product->stock) }}" class="admin-form-input" min="0" required>
                             </div>
 
-                            <div class="row g-3">
+                            <div class="row g-3 mb-3">
                                 <div class="col-6">
                                     <label class="admin-form-label">Material</label>
                                     <input type="text" name="material" value="{{ old('material', $product->material) }}" class="admin-form-input" required>
@@ -139,6 +139,13 @@
                                 <div class="col-6">
                                     <label class="admin-form-label">Color</label>
                                     <input type="text" name="color" value="{{ old('color', $product->color) }}" class="admin-form-input" required>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-group mb-0 pt-2 border-top">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" {{ old('is_active', $product->is_active) ? 'checked' : '' }} style="cursor: pointer; width: 40px; height: 20px;">
+                                    <label class="form-check-label fw-bold text-dark ms-2" for="is_active" style="cursor: pointer;">Product Active (Visible to Customers)</label>
                                 </div>
                             </div>
                         </div>

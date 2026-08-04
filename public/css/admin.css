@@ -76,7 +76,15 @@ body {
 
 .content {
     margin-left: 250px;
-    padding: 40px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    .content {
+        margin-left: 0 !important;
+        padding: 15px 10px !important;
+    }
 }
 
 /* ==============================================================

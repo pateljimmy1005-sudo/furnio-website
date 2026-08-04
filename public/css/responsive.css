@@ -1808,3 +1808,91 @@ body {
         align-items: center !important;
     }
 }
+
+/* ====================================================
+   UNIVERSAL RESPONSIVE UTILITIES & AUDIT ENHANCEMENTS
+   ==================================================== */
+
+/* Global Anti-Overflow & Scaling Protection */
+img, video, iframe, embed, object {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Table Responsive Wrappers */
+.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 100% !important;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.table-responsive table {
+    margin-bottom: 0 !important;
+}
+
+/* Responsive Pagination Links */
+.pagination {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px !important;
+}
+
+.pagination .page-item .page-link {
+    font-size: 13px !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+}
+
+/* Responsive Alerts & Modals */
+.alert {
+    word-break: break-word !important;
+    max-width: 100% !important;
+}
+
+.modal-dialog {
+    margin: 10px auto !important;
+    max-width: 95% !important;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px !important;
+    }
+    .modal-dialog.modal-lg {
+        max-width: 750px !important;
+    }
+    .modal-dialog.modal-xl {
+        max-width: 950px !important;
+    }
+}
+
+/* Ultra Small Mobile Devices (320px - 480px) */
+@media (max-width: 480px) {
+    .btn,
+    .dashboard-btn,
+    .admin-btn-add,
+    .contact-submit-btn {
+        font-size: 12.5px !important;
+        padding: 8px 12px !important;
+    }
+
+    h1, .h1, .page-title {
+        font-size: 16px !important;
+    }
+
+    .search-input-group,
+    .admin-search-form,
+    .admin-contacts-search,
+    .admin-products-search,
+    .admin-reviews-search {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .table th, .table td {
+        font-size: 12px !important;
+        padding: 8px 10px !important;
+    }
+}

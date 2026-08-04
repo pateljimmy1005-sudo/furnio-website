@@ -15,7 +15,7 @@
 
         @foreach($products as $product)
 
-        <div class="col-md-3 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
 
             <div class="card {{ $product->catalogStock() <= 0 ? 'product-card-out-of-stock' : '' }}">
                 <div class="position-relative overflow-hidden">

@@ -43,10 +43,29 @@ class ReviewController extends Controller
         return back()->with('success', 'Your review has been submitted successfully.');
     }
 
-    public function adminIndex()
+    public function adminIndex(Request $request)
     {
-        $reviews = Review::with(['user', 'product'])->latest()->get();
-        return view('admin.reviews', compact('reviews'));
+        $search = $request->search;
+
+        $reviews = Review::with(['user', 'product'])
+            ->when($search, function($query) use ($search) {
+                return $query->where(function($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                      ->orWhere('review', 'like', "%{$search}%")
+                      ->orWhere('rating', 'like', "%{$search}%")
+                      ->orWhereHas('user', function($userQuery) use ($search) {
+                          $userQuery->where('name', 'like', "%{$search}%")
+                                    ->orWhere('email', 'like', "%{$search}%");
+                      })
+                      ->orWhereHas('product', function($productQuery) use ($search) {
+                          $productQuery->where('name', 'like', "%{$search}%");
+                      });
+                });
+            })
+            ->latest()
+            ->paginate(10);
+
+        return view('admin.reviews', compact('reviews', 'search'));
     }
 
     public function destroy($id)
@@ -63,4 +82,3 @@ class ReviewController extends Controller
         return back()->with('success', 'Your review has been deleted.');
     }
 }
-

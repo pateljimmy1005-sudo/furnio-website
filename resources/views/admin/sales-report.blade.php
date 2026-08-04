@@ -4,14 +4,34 @@
 
 <div class="order-page">
 
-    <a href="{{ route('admin.dashboard') }}" class="dashboard-btn mb-4"><i class="fas fa-arrow-left"></i> Back</a>
+    <!-- TOP BAR (OUTSIDE CARDS) WITH BACK AND EXPORT CSV BUTTON -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="dashboard-btn m-0"><i class="fas fa-arrow-left"></i> Back</a>
+        <a href="{{ route('admin.sales-report.export', request()->all()) }}" class="btn btn-success text-white px-3 py-2 rounded-2 fw-bold border-0 shadow-sm" style="background-color: #198754; font-size: 14px;">
+            <i class="fas fa-file-csv me-1"></i> Export CSV
+        </a>
+    </div>
 
-    <div class="card shadow border-0 admin-card-standard">
-        <div class="card-header bg-white d-flex justify-content-start align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
+    @if(session('success'))
+        <div id="successMessage" class="alert alert-success alert-dismissible fade show rounded-3 mb-4" role="alert">
+            <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div id="errorMessage" class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <div class="card shadow border-0 admin-card-standard mb-4">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3 admin-card-header-standard" style="border-bottom: 2px solid var(--theme-primary);">
             <h2 class="page-title m-0 fw-bold text-uppercase text-start text-break">Sales Report Filters</h2>
         </div>
 
-        <div class="card-body p-3 p-md-4 ">
+        <div class="card-body p-3 p-md-4">
             <form action="{{ route('admin.sales-report') }}" method="GET" class="d-flex flex-column flex-md-row gap-3 align-items-md-end mb-4">
                 <div class="w-100 w-md-auto">
                     <label for="start_date" class="form-label mb-1">Start Date</label>
@@ -82,7 +102,7 @@
                             <td class="fw-bold text-uppercase text-secondary py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">
                                 {{ is_object($order->status) ? $order->status->value : $order->status }}
                             </td>
-                            <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">{{ $order->created_at->format('d M Y, h:i A') }}</td>
+                            <td class="py-2 py-md-3 px-2 px-md-3" style="font-size: 13px;">{{ $order->created_at ? $order->created_at->format('d M Y, h:i A') : 'N/A' }}</td>
                             <td class="fw-bold text-dark py-2 py-md-3 px-2 px-md-3" style="font-size: 14px;">₹{{ number_format($order->total_amount ?? $order->total_price, 2) }}</td>
                         </tr>
                         @empty
@@ -105,7 +125,3 @@
 </div>
 
 @endsection
-
-
-
-

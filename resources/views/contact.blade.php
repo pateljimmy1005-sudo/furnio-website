@@ -72,17 +72,48 @@
                 msg.classList.add('fade-out');
                 setTimeout(() => msg.remove(), 500);
             }
-        }, 3000); // 3 seconds
+        }, 5000); // 5 seconds
     </script>
+@endif
+
+@if(session('error'))
+    <div id="contactErrorMessage" class="contact-alert-danger">
+        {{ session('error') }}
+    </div>
 @endif
 
                 <form action="{{ route('contact.store') }}" method="POST">
                     @csrf
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="text" name="phone" placeholder="Your Phone Number">
-                    <input type="text" name="subject" placeholder="Subject">
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <div class="mb-3">
+                        <input type="text" name="name" placeholder="Your Name" value="{{ old('name') }}" required>
+                        @error('name')
+                            <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" placeholder="Your Email" value="{{ old('email') }}" required>
+                        @error('email')
+                            <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="phone" placeholder="Your Phone Number" value="{{ old('phone') }}">
+                        @error('phone')
+                            <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="subject" placeholder="Subject" value="{{ old('subject') }}">
+                        @error('subject')
+                            <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="message" rows="5" placeholder="Your Message" required>{{ old('message') }}</textarea>
+                        @error('message')
+                            <span class="text-danger small mt-1 d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <button type="submit" class="contact-submit-btn">Send Message</button>
                 </form>
             </div>

@@ -5828,6 +5828,15 @@ body {
     border-radius: 8px;
     margin-bottom: 20px;
     font-weight: 500;
+}
+.contact-alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
 }.container-main { max-width: 1300px !important; margin: 0 auto !important; }
 .title-line { width: 80px; height: 2px; background-color: #C06B1F; border-radius: 2px; margin-top: 5px; }
 
@@ -6546,10 +6555,11 @@ body {
 ========================================================= */
 .orders-history-page {
     background-color: #f9fafb;
-    padding: 60px 0;
+    padding: 24px 0 60px 0;
     min-height: calc(100vh - 300px);
 }
-.orders-container {
+.orders-container,
+.orders-main-container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
@@ -8930,45 +8940,160 @@ html {
 }
 
 /* ==========================================================================
-   SIMPLE MY ORDERS SEARCH BAR
+   E-COMMERCE MY ORDERS SEARCH BAR & BACK BUTTON
    ========================================================================== */
+.orders-back-btn-wrapper {
+    margin: 0 0 16px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.orders-back-btn {
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #C06B1F !important;
+    background-color: #FFF4EC !important;
+    border: 1px solid #FED7AA !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 2px 6px rgba(192, 107, 31, 0.08) !important;
+}
+
+.orders-back-btn:hover {
+    background-color: #C06B1F !important;
+    color: #FFFFFF !important;
+    border-color: #C06B1F !important;
+    box-shadow: 0 4px 12px rgba(192, 107, 31, 0.2) !important;
+    transform: translateX(-4px) !important;
+}
+
 .orders-search-box {
-    max-width: 650px;
+    max-width: 800px;
     margin: 0 auto 32px auto;
 }
 
-.orders-search-input {
-    border: 1px solid #D1D5DB;
-    border-right: none;
-    border-radius: 10px 0 0 10px !important;
-    padding: 12px 18px;
-    font-size: 14px;
-    background-color: #FAFAFA;
-    transition: all 0.2s ease;
+.orders-search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    height: 50px;
 }
 
-.orders-search-input:focus {
-    background-color: #ffffff;
+.orders-search-input-group:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 6px 18px rgba(192, 107, 31, 0.08);
+}
+
+.orders-search-input-group:focus-within {
     border-color: #C06B1F;
-    box-shadow: 0 0 0 3px rgba(192, 107, 31, 0.12);
-    outline: none;
+    box-shadow: 0 0 0 3.5px rgba(192, 107, 31, 0.15), 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.orders-search-icon-inside {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    font-size: 15px;
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orders-search-input {
+    flex: 1;
+    height: 100%;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    padding: 0 16px 0 44px !important;
+    font-size: 14.5px;
+    color: #1F2937;
+    border-radius: 12px 0 0 12px !important;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+}
+
+.orders-search-input::placeholder {
+    color: #9CA3AF;
+    font-size: 14px;
+    opacity: 1;
+}
+
+.orders-search-clear-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    color: #9CA3AF;
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    height: 100%;
+}
+
+.orders-search-clear-btn:hover {
+    color: #374151;
 }
 
 .orders-search-btn {
+    height: 100%;
     background-color: #C06B1F !important;
     color: #ffffff !important;
-    border: 1px solid #C06B1F !important;
-    border-radius: 0 10px 10px 0 !important;
-    padding: 12px 24px !important;
+    border: none !important;
+    border-radius: 0 11px 11px 0 !important;
+    padding: 0 28px !important;
     font-weight: 700 !important;
-    font-size: 14px !important;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 14.5px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+    cursor: pointer;
 }
 
 .orders-search-btn:hover {
     background-color: #A35717 !important;
-    border-color: #A35717 !important;
     color: #ffffff !important;
+}
+
+.orders-search-btn:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 576px) {
+    .orders-history-page {
+        padding: 16px 0 40px 0;
+    }
+    .orders-search-input-group {
+        height: 46px;
+    }
+    .orders-search-input {
+        padding: 0 10px 0 38px !important;
+        font-size: 13.5px;
+    }
+    .orders-search-icon-inside {
+        left: 12px;
+        font-size: 14px;
+    }
+    .orders-search-btn {
+        padding: 0 18px !important;
+        font-size: 13.5px !important;
+    }
 }
 
 .btn-orders-apply:hover {

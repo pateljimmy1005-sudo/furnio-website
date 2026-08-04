@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Submission</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+            -webkit-text-size-adjust: none;
+        }
+        .email-wrapper {
+            width: 100%;
+            background-color: #f4f6f8;
+            padding: 40px 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        .email-header {
+            background-color: #C06B1F;
+            color: #ffffff;
+            padding: 24px 30px;
+            text-align: center;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .email-header p {
+            margin: 6px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .email-body {
+            padding: 30px;
+        }
+        .detail-card {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .detail-row {
+            display: table;
+            width: 100%;
+            padding: 8px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            display: table-cell;
+            font-weight: 600;
+            color: #4b5563;
+            width: 35%;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .detail-value {
+            display: table-cell;
+            color: #1f2937;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .message-box {
+            background-color: #fff8f3;
+            border-left: 4px solid #C06B1F;
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2d3748;
+            white-space: pre-wrap;
+            margin-top: 10px;
+        }
+        .email-footer {
+            background-color: #f9fafb;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <div class="email-container">
+            <div class="email-header">
+                <h1>FURNIO</h1>
+                <p>New Contact / Complaint Submission</p>
+            </div>
+
+            <div class="email-body">
+                <p style="font-size: 16px; margin-bottom: 20px;">You have received a new contact form submission from the Furnio website:</p>
+
+                <div class="detail-card">
+                    <div class="detail-row">
+                        <div class="detail-label">User Name:</div>
+                        <div class="detail-value"><strong>{{ $contact->name }}</strong></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Email Address:</div>
+                        <div class="detail-value"><a href="mailto:{{ $contact->email }}" style="color: #C06B1F; text-decoration: none;">{{ $contact->email }}</a></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Phone Number:</div>
+                        <div class="detail-value">{{ $contact->phone ?? 'N/A' }}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Subject:</div>
+                        <div class="detail-value">{{ $contact->subject ?? 'N/A' }}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Submitted At:</div>
+                        <div class="detail-value">{{ $contact->created_at ? $contact->created_at->format('F j, Y, g:i A T') : now()->format('F j, Y, g:i A T') }}</div>
+                    </div>
+                </div>
+
+                <h3 style="color: #374151; font-size: 16px; margin-bottom: 8px;">Complaint / Message:</h3>
+                <div class="message-box">
+                    {{ $contact->message }}
+                </div>
+            </div>
+
+            <div class="email-footer">
+                <p style="margin: 0;">This email was automatically generated by the Furnio Website contact form system.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

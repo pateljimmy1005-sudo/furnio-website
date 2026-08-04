@@ -109,6 +109,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/sales-report', [SalesReportController::class, 'index'])->name('sales-report');
+    Route::get('/sales-report/export', [SalesReportController::class, 'exportCsv'])->name('sales-report.export');
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('/products', 'adminProducts')->name('products');
@@ -135,6 +136,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::controller(ContactController::class)->group(function () {
         Route::get('/contacts', 'adminIndex')->name('contacts');
+        Route::post('/contacts/reply/{id}', 'reply')->name('contacts.reply');
         Route::delete('/contacts/delete/{id}', 'destroy')->name('contacts.destroy');
     });
 

@@ -280,10 +280,21 @@ public function toggleProductStatus($id)
     }
 
 
-    public function adminProducts()
+    public function adminProducts(Request $request)
     {
-        $products = Product::with('images')->latest()->get();
-        return view('admin.products', compact('products'));
+        $search = $request->search;
+
+        $products = Product::with('images')
+            ->when($search, function ($query) use ($search) {
+                return $query->where('name', 'LIKE', "%{$search}%")
+                             ->orWhere('category', 'LIKE', "%{$search}%")
+                             ->orWhere('description', 'LIKE', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.products', compact('products', 'search'));
     }
 
     public function createProduct()

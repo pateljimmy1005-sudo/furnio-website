@@ -2,11 +2,8 @@
 
 @section('content')
 
-<div class="container my-5">
 <div class="orders-history-page orders-page-wrapper">
-
-    <div class="container" style="max-width: 1000px;">
-        
+    <div class="container orders-main-container" style="max-width: 1000px;">
 
 @if(session('success'))
     <div class="orders-alert-success auto-hide-alert">
@@ -30,13 +27,15 @@
     }, 3000); 
 </script>
 
-        <div class="mb-3">
-            <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn d-inline-flex align-items-center">
+        <!-- Back Button Section -->
+        <div class="orders-back-btn-wrapper mb-3">
+            <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn orders-back-btn d-inline-flex align-items-center">
                 <i class="bi bi-arrow-left me-1"></i> Back
             </a>
         </div>
 
-        <div class="text-center mb-4 mt-2">
+        <!-- Page Header Title -->
+        <div class="text-center mb-4 mt-1">
             <h1 class="section-title all-products-header fw-bold" style="margin-bottom: 2px !important;">
                 My Orders
             </h1>
@@ -48,19 +47,22 @@
             </p>
         </div>
 
-        <!-- Simple Search Bar -->
+        <!-- E-Commerce Redesigned Search Bar -->
         <div class="orders-search-box mb-4">
             <form action="{{ route('orders') }}" method="GET">
-                <div class="input-group shadow-sm" style="border-radius: 10px;">
+                <div class="orders-search-input-group shadow-sm">
+                    <span class="orders-search-icon-inside">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
                     <input type="text" name="search" value="{{ request('search') }}" class="form-control orders-search-input" placeholder="Search Order ID (#123), Product, Invoice, Name, Phone, Payment ID...">
-                    <button type="submit" class="btn orders-search-btn">
-                        <i class="fa-solid fa-magnifying-glass me-1"></i> Search
-                    </button>
                     @if(request()->filled('search'))
-                        <a href="{{ route('orders') }}" class="btn btn-outline-secondary d-flex align-items-center justify-content-center px-3" style="border-radius: 0 10px 10px 0; border-left: none;" title="Clear Search">
+                        <a href="{{ route('orders') }}" class="orders-search-clear-btn" title="Clear Search">
                             <i class="fa-solid fa-xmark"></i>
                         </a>
                     @endif
+                    <button type="submit" class="btn orders-search-btn">
+                        Search
+                    </button>
                 </div>
 
                 @if(request()->filled('search'))
@@ -221,7 +223,6 @@
 
     </div>
 
-</div>
 </div>
 
 @endsection

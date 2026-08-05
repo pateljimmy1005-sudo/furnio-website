@@ -119,7 +119,11 @@
         <div class="mobile-icons-bar py-2 px-3 border-bottom d-flex justify-content-around align-items-center d-lg-none bg-light">
             @auth
                 <a href="{{ route('profile.edit') }}" class="mobile-icon-link text-dark text-decoration-none d-flex flex-column align-items-center">
-                    <i class="bi bi-person-circle mb-1"></i>
+                    @if(auth()->user()->profile_photo)
+                        <img src="{{ asset(auth()->user()->profile_photo) }}" alt="{{ auth()->user()->name }}" class="rounded-circle mb-1" style="width: 26px; height: 26px; object-fit: cover; border: 1.5px solid #C06B1F;">
+                    @else
+                        <i class="bi bi-person-circle mb-1"></i>
+                    @endif
                     <span class="mobile-icon-label">Profile</span>
                 </a>
             @else

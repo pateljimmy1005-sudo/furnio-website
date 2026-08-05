@@ -84,6 +84,25 @@
         </div>
     @endif
 
+    @if(session('success') || session('error'))
+        <script>
+            setTimeout(function() {
+                var successMsg = document.getElementById('successMessage');
+                if (successMsg) {
+                    successMsg.style.transition = 'opacity 0.5s ease';
+                    successMsg.style.opacity = '0';
+                    setTimeout(function() { successMsg.style.display = 'none'; }, 500);
+                }
+                var errorMsg = document.getElementById('errorMessage');
+                if (errorMsg) {
+                    errorMsg.style.transition = 'opacity 0.5s ease';
+                    errorMsg.style.opacity = '0';
+                    setTimeout(function() { errorMsg.style.display = 'none'; }, 500);
+                }
+            }, 3000);
+        </script>
+    @endif
+
     <div class="admin-contacts-card">
         <div class="admin-contacts-header d-flex justify-content-between align-items-center">
             <h2 class="page-title m-0 fw-bold text-uppercase">Contact Form Submissions</h2>

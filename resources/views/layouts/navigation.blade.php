@@ -1,7 +1,11 @@
 @auth
 <div class="user-dropdown-new position-relative">
     <a href="#" class="icon-link-new d-flex align-items-center gap-2 text-decoration-none">
-        <i class="bi bi-person-circle fs-5"></i>
+        @if(auth()->user()->profile_photo)
+            <img src="{{ asset(auth()->user()->profile_photo) }}" alt="{{ auth()->user()->name }}" class="header-user-avatar" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid #C06B1F;">
+        @else
+            <i class="bi bi-person-circle fs-5"></i>
+        @endif
         <span>{{ auth()->user()->name }}</span>
     </a>
     <ul class="user-dropdown-menu">

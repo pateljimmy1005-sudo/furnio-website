@@ -83,3 +83,20 @@ test('correct password must be provided to delete account', function () {
 
     $this->assertNotNull($user->fresh());
 });
+
+test('profile photo can be removed', function () {
+    $user = User::factory()->create([
+        'profile_photo' => 'uploads/users/test.jpg'
+    ]);
+
+    $response = $this
+        ->actingAs($user)
+        ->delete('/profile/photo');
+
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertRedirect('/profile');
+
+    $user->refresh();
+    $this->assertNull($user->profile_photo);
+});

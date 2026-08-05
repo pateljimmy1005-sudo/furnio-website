@@ -43,7 +43,12 @@ class ProfileController extends Controller
         
         $validated = $request->validated();
         
-        if ($request->hasFile('profile_photo')) {
+        if ($request->boolean('remove_photo')) {
+            if ($user->profile_photo && file_exists(public_path($user->profile_photo))) {
+                unlink(public_path($user->profile_photo));
+            }
+            $validated['profile_photo'] = null;
+        } elseif ($request->hasFile('profile_photo')) {
             if ($user->profile_photo && file_exists(public_path($user->profile_photo))) {
                 unlink(public_path($user->profile_photo));
             }
@@ -63,6 +68,23 @@ class ProfileController extends Controller
         $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    /**
+     * Delete the user's profile photo.
+     */
+    public function destroyPhoto(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        if ($user->profile_photo && file_exists(public_path($user->profile_photo))) {
+            unlink(public_path($user->profile_photo));
+        }
+
+        $user->profile_photo = null;
+        $user->save();
+
+        return Redirect::route('profile.edit')->with('status', 'profile-photo-deleted');
     }
 
     /**

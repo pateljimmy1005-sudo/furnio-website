@@ -58,7 +58,7 @@
             </div>
 
             <div class="contact-form">
-                <h2 class="mb-4">Send Message</h2>
+                <h2 class="contact-form-title">Send Message</h2>
                 
 @if(session('success'))
     <div id="contactSuccessMessage" class="contact-alert-success">
@@ -84,31 +84,31 @@
 
                 <form action="{{ route('contact.store') }}" method="POST">
                     @csrf
-                    <div class="mb-3">
+                    <div class="form-group mb-0">
                         <input type="text" name="name" placeholder="Your Name" value="{{ old('name') }}" required>
                         @error('name')
                             <span class="text-danger small mt-1 d-block">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="form-group mb-0">
                         <input type="email" name="email" placeholder="Your Email" value="{{ old('email') }}" required>
                         @error('email')
                             <span class="text-danger small mt-1 d-block">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="form-group mb-0">
                         <input type="text" name="phone" placeholder="Your Phone Number" value="{{ old('phone') }}">
                         @error('phone')
                             <span class="text-danger small mt-1 d-block">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="form-group mb-0">
                         <input type="text" name="subject" placeholder="Subject" value="{{ old('subject') }}">
                         @error('subject')
                             <span class="text-danger small mt-1 d-block">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    <div class="form-group mb-0">
                         <textarea name="message" rows="5" placeholder="Your Message" required>{{ old('message') }}</textarea>
                         @error('message')
                             <span class="text-danger small mt-1 d-block">{{ $message }}</span>

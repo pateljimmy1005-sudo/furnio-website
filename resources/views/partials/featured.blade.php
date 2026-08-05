@@ -35,7 +35,7 @@
                 </div>
                 
                 <div class="card-body d-flex flex-column p-4">
-                    <div class="text-warning mb-2 home-product-rating fw-bold" style="font-size: 13px;">
+                    <div class="text-warning mb-2 home-product-rating fw-bold d-flex justify-content-center align-items-center mx-auto" style="font-size: 13px;">
                         <i class="bi bi-star-fill me-1"></i>{{ number_format($product->averageRating(), 1) }}
                         <span class="text-muted fw-normal ms-1">({{ $product->reviewCount() }})</span>
                     </div>

@@ -5,11 +5,11 @@
 <div class="container my-5">
 
     <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn mb-4 d-inline-block">
-        <i class="bi bi-arrow-left"></i> Back 
+        <i class="bi bi-arrow-left"></i> Back
     </a>
 
     @if($search)
-        <div class="text-center mb-5 mt-4">
+        <div class="text-center mb-5 mt-2">
             <h2 class="search-results-header section-title fw-bold mb-1">
                 Search Results for "{{ $search }}"
             </h2>
@@ -18,7 +18,7 @@
             </div>
         </div>
     @else
-        <div class="text-center mb-5 mt-4">
+        <div class="text-center mb-5 mt-2">
             <h2 class="all-products-header section-title fw-bold mb-1">
                 Our Products
             </h2>
@@ -50,7 +50,7 @@
                         : null;
                 @endphp
 
-                <div class="product-card {{ $img->catalogStock() <= 0 ? 'product-card-out-of-stock' : '' }}">
+                <div class="product-card">
 
                     <div class="wishlist-heart">
 
@@ -100,21 +100,21 @@
                         <img src="{{ $img->imageUrl() }}" class="card-img {{ $img->catalogStock() <= 0 ? 'out-of-stock-img-dim' : '' }}">
                     </a>
 
-                    <h3>{{ $img->name }}</h3>
+                    <h3>{{ $img->catalogName() }}</h3>
 
-                    <div class="store-card-rating-badge">
+                    <div class="store-card-rating-badge justify-content-center align-items-center mx-auto">
                         <i class="fa-solid fa-star text-warning"></i> {{ number_format($img->averageRating(), 1) }}
                         <span class="text-muted fw-normal">({{ $img->reviewCount() }})</span>
                     </div>
 
                     <p class="price-tag">
-                        ₹{{ number_format($img->finalPrice()) }}
+                        ₹{{ number_format($img->catalogPrice()) }}
                     </p>
 
                     <!-- Button -->
                     @if($img->catalogStock() > 0)
                         <a href="{{ route('image.detail', $img->id) }}" class="btn-primary btn-view-details">
-                            View Details
+                            View Details <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     @else
                         <a href="{{ route('image.detail', $img->id) }}" class="btn-out-of-stock-disabled text-decoration-none">

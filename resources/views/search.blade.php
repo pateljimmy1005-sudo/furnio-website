@@ -141,7 +141,7 @@
 
                     <h3>{{ $img->name }}</h3>
 
-                    <div class="store-card-rating-badge">
+                    <div class="store-card-rating-badge justify-content-center align-items-center mx-auto">
                         <i class="fa-solid fa-star text-warning"></i> {{ number_format($img->averageRating(), 1) }}
                         <span class="text-muted fw-normal">({{ $img->reviewCount() }})</span>
                     </div>

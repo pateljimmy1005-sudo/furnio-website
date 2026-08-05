@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="profile-page">
-<div class="container my-5">
-        <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-top: -30px; margin-bottom: 20px;">
+    <div class="container mt-2 mb-5">
+        <a href="{{ url()->previous() != url()->current() ? url()->previous() : route('home') }}" class="back-btn" style="display: inline-block; margin-top: 0; margin-bottom: 15px;">
             <i class="bi bi-arrow-left"></i> Back
         </a>
 
@@ -18,7 +18,16 @@
                 <div class="profile-card">
                     <div class="profile-pic-section">
                         @if($user->profile_photo)
-                            <img src="{{ asset($user->profile_photo) }}" alt="Profile Photo" class="profile-pic">
+                            <div class="profile-pic-container">
+                                <img src="{{ asset($user->profile_photo) }}" alt="Profile Photo" class="profile-pic">
+                                <form action="{{ route('profile.photo.destroy') }}" method="POST" onsubmit="return confirm('Are you sure you want to remove your profile photo?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-remove-avatar" title="Remove Profile Photo">
+                                        <i class="bi bi-trash"></i> Remove Photo
+                                    </button>
+                                </form>
+                            </div>
                         @else
                             <div class="profile-pic-placeholder">
                                 {{ strtoupper(substr($user->name, 0, 1)) }}
